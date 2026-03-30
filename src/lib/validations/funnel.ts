@@ -1,50 +1,71 @@
 import { z } from "zod";
 
-import {
-  budgetOptions,
-  currentLevelOptions,
-  timeCommitmentOptions,
-} from "@/types/funnel";
+type QualificationFormSchemaConfig = {
+  options: {
+    budget: readonly string[];
+    currentLevel: readonly string[];
+    timeCommitment: readonly string[];
+  };
+  validation: {
+    biggestStruggleMax: string;
+    biggestStruggleMin: string;
+    budgetInvalid: string;
+    currentLevelRequired: string;
+    goalMax: string;
+    goalMin: string;
+    timeCommitmentRequired: string;
+  };
+};
 
-export const qualificationFormSchema = z.object({
-  goal: z
-    .string()
-    .trim()
-    .min(10, "Enter at least 10 characters.")
-    .max(500, "Keep this under 500 characters."),
-  currentLevel: z
-    .string()
-    .trim()
-    .min(1, "Select your current level.")
-    .refine(
-      (value) => (currentLevelOptions as readonly string[]).includes(value),
-      "Select your current level.",
-    ),
-  biggestStruggle: z
-    .string()
-    .trim()
-    .min(10, "Enter at least 10 characters.")
-    .max(500, "Keep this under 500 characters."),
-  timeCommitment: z
-    .string()
-    .trim()
-    .min(1, "Select your time commitment.")
-    .refine(
-      (value) => (timeCommitmentOptions as readonly string[]).includes(value),
-      "Select your time commitment.",
-    ),
-  budget: z
-    .string()
-    .trim()
-    .refine(
-      (value) =>
-        value === "" || (budgetOptions as readonly string[]).includes(value),
-      "Select a valid budget range or leave it blank.",
-    ),
-});
+export function getQualificationFormSchema(
+  config: QualificationFormSchemaConfig,
+) {
+  return z.object({
+    goal: z
+      .string()
+      .trim()
+      .min(10, config.validation.goalMin)
+      .max(500, config.validation.goalMax),
+    currentLevel: z
+      .string()
+      .trim()
+      .min(1, config.validation.currentLevelRequired)
+      .refine(
+        (value) => config.options.currentLevel.includes(value),
+        config.validation.currentLevelRequired,
+      ),
+    biggestStruggle: z
+      .string()
+      .trim()
+      .min(10, config.validation.biggestStruggleMin)
+      .max(500, config.validation.biggestStruggleMax),
+    timeCommitment: z
+      .string()
+      .trim()
+      .min(1, config.validation.timeCommitmentRequired)
+      .refine(
+        (value) => config.options.timeCommitment.includes(value),
+        config.validation.timeCommitmentRequired,
+      ),
+    budget: z
+      .string()
+      .trim()
+      .refine(
+        (value) => value === "" || config.options.budget.includes(value),
+        config.validation.budgetInvalid,
+      ),
+  });
+}
 
 export const aiSummaryRequestSchema = z.object({
-  answers: qualificationFormSchema,
+  answers: z.object({
+    goal: z.string().trim().min(10).max(500),
+    currentLevel: z.string().trim().min(1).max(120),
+    biggestStruggle: z.string().trim().min(10).max(500),
+    timeCommitment: z.string().trim().min(1).max(120),
+    budget: z.string().trim().max(120),
+  }),
+  language: z.enum(["en", "hu"]),
 });
 
 export const aiPlanSchema = z.object({

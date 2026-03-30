@@ -1,55 +1,41 @@
-const steps = [
-  {
-    title: "Share your goal and current routine",
-    description:
-      "Answer a few quick questions about your goal, your current level, and what has been getting in the way.",
-  },
-  {
-    title: "Get your personalized starter plan",
-    description:
-      "The intake turns your answers into a practical first-pass plan with the clearest next steps to focus on.",
-  },
-  {
-    title: "Book a call or send a DM",
-    description:
-      "If the plan feels right, the next step is simple: talk it through with Alex and get help applying it.",
-  },
-] as const;
+import type { SiteDictionary } from "@/lib/dictionaries";
 
-export function HowItWorksSection() {
+type HowItWorksSectionProps = {
+  copy: SiteDictionary["home"]["howItWorks"];
+};
+
+export function HowItWorksSection({ copy }: HowItWorksSectionProps) {
   return (
     <section aria-labelledby="how-it-works-title" className="pt-6 sm:pt-8">
       <div className="space-y-8">
         <div className="max-w-2xl space-y-3">
-          <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
-            How the process works
+          <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted dark:text-slate-400">
+            {copy.badge}
           </p>
           <h2
             id="how-it-works-title"
-            className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
+            className="text-3xl font-semibold tracking-tight text-balance text-slate-950 dark:text-slate-50 sm:text-4xl"
           >
-            A simple first step before you commit to coaching
+            {copy.title}
           </h2>
-          <p className="text-base leading-7 text-muted">
-            The goal is to make the next move easier to see, so you can stop
-            overthinking the process and focus on what will help most right
-            now.
+          <p className="text-base leading-7 text-muted dark:text-slate-300">
+            {copy.body}
           </p>
         </div>
 
         <ol className="grid gap-4 md:grid-cols-3">
-          {steps.map((step, index) => (
+          {copy.steps.map((step, index) => (
             <li key={step.title} className="list-none">
-              <article className="h-full rounded-[1.75rem] border border-panel-border bg-white/75 p-6 shadow-[0_16px_40px_rgba(15,23,42,0.06)]">
+              <article className="h-full rounded-[1.75rem] border border-panel-border bg-white/75 p-6 shadow-[0_16px_40px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-950/75">
                 <div className="flex h-full flex-col gap-5">
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-950 text-sm font-semibold text-white">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div className="space-y-3">
-                    <h3 className="text-xl font-semibold tracking-tight text-slate-950">
+                    <h3 className="text-xl font-semibold tracking-tight text-slate-950 dark:text-slate-50">
                       {step.title}
                     </h3>
-                    <p className="text-sm leading-6 text-muted sm:text-base">
+                    <p className="text-sm leading-6 text-muted dark:text-slate-300 sm:text-base">
                       {step.description}
                     </p>
                   </div>

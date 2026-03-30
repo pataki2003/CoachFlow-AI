@@ -1,20 +1,34 @@
+import { ContactCtaSection } from "@/components/landing/contact-cta-section";
 import { AboutCoachSection } from "@/components/landing/about-coach-section";
 import { FunnelPlaceholderSection } from "@/components/landing/funnel-placeholder-section";
+import { GallerySection } from "@/components/landing/gallery-section";
 import { HeroSection } from "@/components/landing/hero-section";
 import { HowItWorksSection } from "@/components/landing/how-it-works-section";
+import { getDictionary } from "@/lib/dictionaries";
 import { publicEnv } from "@/lib/env";
+import { getSitePreferences } from "@/lib/server-site-preferences";
 
-export default function Home() {
+export default async function Home() {
+  const { language } = await getSitePreferences();
+  const dictionary = getDictionary(language);
+
   return (
-    <main className="pb-16 sm:pb-24">
-      <div className="mx-auto flex w-full max-w-6xl flex-col px-6 sm:px-10">
+    <main className="pb-16 pt-2 sm:pb-24 sm:pt-4">
+      <div className="flex flex-col">
         <HeroSection
           bookingUrl={publicEnv.NEXT_PUBLIC_BOOKING_URL ?? null}
+          copy={dictionary.home.hero}
           instagramUrl={publicEnv.NEXT_PUBLIC_INSTAGRAM_URL ?? null}
         />
-        <AboutCoachSection />
-        <HowItWorksSection />
-        <FunnelPlaceholderSection />
+        <AboutCoachSection copy={dictionary.home.about} />
+        <HowItWorksSection copy={dictionary.home.howItWorks} />
+        <GallerySection copy={dictionary.home.gallery} />
+        <FunnelPlaceholderSection copy={dictionary.home.freePlanTeaser} />
+        <ContactCtaSection
+          bookingUrl={publicEnv.NEXT_PUBLIC_BOOKING_URL ?? null}
+          copy={dictionary.home.contactCta}
+          instagramUrl={publicEnv.NEXT_PUBLIC_INSTAGRAM_URL ?? null}
+        />
       </div>
     </main>
   );

@@ -1,14 +1,11 @@
 import type { UseFormReturn } from "react-hook-form";
 
+import type { SiteDictionary } from "@/lib/dictionaries";
 import { cn } from "@/lib/utils";
-import {
-  budgetOptions,
-  currentLevelOptions,
-  timeCommitmentOptions,
-  type QualificationFormValues,
-} from "@/types/funnel";
+import type { QualificationFormValues } from "@/types/funnel";
 
 type QualificationFormProps = {
+  copy: SiteDictionary["freePlan"]["form"];
   errorMessage?: string | null;
   form: UseFormReturn<QualificationFormValues>;
   onSubmit: (values: QualificationFormValues) => Promise<void>;
@@ -16,15 +13,16 @@ type QualificationFormProps = {
 
 function getFieldClasses(hasError: boolean) {
   return cn(
-    "w-full rounded-2xl border bg-white px-4 py-3 text-sm text-slate-900 shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300",
+    "w-full rounded-2xl border bg-white px-4 py-3 text-sm text-slate-900 shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 dark:border-white/10 dark:bg-slate-950/80 dark:text-slate-100 dark:placeholder:text-slate-500 dark:shadow-none dark:focus-visible:ring-sky-500/70",
     "placeholder:text-slate-400",
     hasError
-      ? "border-rose-300 focus-visible:ring-rose-200"
-      : "border-white/80 focus-visible:border-sky-200",
+      ? "border-rose-300 focus-visible:ring-rose-200 dark:border-rose-800 dark:focus-visible:ring-rose-500/60"
+      : "border-white/80 focus-visible:border-sky-200 dark:focus-visible:border-sky-500/70",
   );
 }
 
 export function QualificationForm({
+  copy,
   errorMessage,
   form,
   onSubmit,
@@ -39,21 +37,19 @@ export function QualificationForm({
     <form
       noValidate
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-[1.75rem] border border-white/80 bg-white/82 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.08)] sm:p-8 lg:p-10"
+      className="rounded-[1.75rem] border border-white/80 bg-white/82 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-slate-950/80 sm:p-8 lg:p-10"
     >
       <fieldset disabled={isSubmitting} className="space-y-6 sm:space-y-7">
         <div className="space-y-4">
-          <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800">
-            Free personalized plan
+          <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800 dark:border-sky-900/60 dark:bg-sky-950/60 dark:text-sky-200">
+            {copy.badge}
           </span>
           <div className="space-y-3">
-            <h3 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
-              Answer a few quick questions
+            <h3 className="text-2xl font-semibold tracking-tight text-slate-950 dark:text-slate-50 sm:text-3xl">
+              {copy.title}
             </h3>
-            <p className="max-w-2xl text-sm leading-6 text-muted sm:text-base">
-              This short intake helps Alex see where your fitness progress may
-              be getting stuck, then turn that into a personalized starter plan
-              you can use right away.
+            <p className="max-w-2xl text-sm leading-6 text-muted dark:text-slate-300 sm:text-base">
+              {copy.body}
             </p>
           </div>
         </div>
@@ -61,14 +57,14 @@ export function QualificationForm({
         <div className="space-y-2.5">
           <label
             htmlFor="goal"
-            className="text-sm font-semibold tracking-tight text-slate-900"
+            className="text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-100"
           >
-            What is your main fitness goal right now?
+            {copy.fields.goal.label}
           </label>
           <textarea
             id="goal"
             rows={4}
-            placeholder="For example: lose body fat, build muscle, feel stronger, or get back into a routine I can actually stick to."
+            placeholder={copy.fields.goal.placeholder}
             className={cn(getFieldClasses(Boolean(errors.goal)), "leading-7")}
             {...register("goal")}
           />
@@ -82,17 +78,17 @@ export function QualificationForm({
         <div className="space-y-2.5">
           <label
             htmlFor="currentLevel"
-            className="text-sm font-semibold tracking-tight text-slate-900"
+            className="text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-100"
           >
-            What best describes your current level?
+            {copy.fields.currentLevel.label}
           </label>
           <select
             id="currentLevel"
             className={getFieldClasses(Boolean(errors.currentLevel))}
             {...register("currentLevel")}
           >
-            <option value="">Select your current level</option>
-            {currentLevelOptions.map((option) => (
+            <option value="">{copy.fields.currentLevel.placeholder}</option>
+            {copy.options.currentLevel.map((option) => (
               <option key={option} value={option}>
                 {option}
               </option>
@@ -108,14 +104,14 @@ export function QualificationForm({
         <div className="space-y-2.5">
           <label
             htmlFor="biggestStruggle"
-            className="text-sm font-semibold tracking-tight text-slate-900"
+            className="text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-100"
           >
-            What is the biggest thing getting in your way?
+            {copy.fields.biggestStruggle.label}
           </label>
           <textarea
             id="biggestStruggle"
             rows={4}
-            placeholder="For example: lack of consistency, not knowing what to do at the gym, low energy, nutrition habits, or trouble staying on track."
+            placeholder={copy.fields.biggestStruggle.placeholder}
             className={cn(
               getFieldClasses(Boolean(errors.biggestStruggle)),
               "leading-7",
@@ -133,17 +129,17 @@ export function QualificationForm({
           <div className="space-y-2.5">
             <label
               htmlFor="timeCommitment"
-              className="text-sm font-semibold tracking-tight text-slate-900"
+              className="text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-100"
             >
-              How much time can you realistically commit each week?
+              {copy.fields.timeCommitment.label}
             </label>
             <select
               id="timeCommitment"
               className={getFieldClasses(Boolean(errors.timeCommitment))}
               {...register("timeCommitment")}
             >
-              <option value="">Select your time commitment</option>
-              {timeCommitmentOptions.map((option) => (
+              <option value="">{copy.fields.timeCommitment.placeholder}</option>
+              {copy.options.timeCommitment.map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>
@@ -159,17 +155,17 @@ export function QualificationForm({
           <div className="space-y-2.5">
             <label
               htmlFor="budget"
-              className="text-sm font-semibold tracking-tight text-slate-900"
+              className="text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-100"
             >
-              What budget feels realistic for support right now?
+              {copy.fields.budget.label}
             </label>
             <select
               id="budget"
               className={getFieldClasses(Boolean(errors.budget))}
               {...register("budget")}
             >
-              <option value="">Select a budget range (optional)</option>
-              {budgetOptions.map((option) => (
+              <option value="">{copy.fields.budget.placeholder}</option>
+              {copy.options.budget.map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>
@@ -187,23 +183,26 @@ export function QualificationForm({
           {errorMessage ? (
             <div
               role="alert"
-              className="rounded-2xl border border-rose-200 bg-rose-50/90 px-4 py-3 text-sm font-medium text-rose-700"
+              className="rounded-2xl border border-rose-200 bg-rose-50/90 px-4 py-3 text-sm font-medium text-rose-700 dark:border-rose-900/50 dark:bg-rose-950/60 dark:text-rose-200"
             >
               {errorMessage}
             </div>
           ) : null}
           <button
             type="submit"
-            className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-wait disabled:bg-sky-400"
+            className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-wait disabled:bg-sky-400 dark:focus-visible:ring-offset-slate-950"
           >
             {isSubmitting
-              ? "Building your personalized plan..."
-              : "Get my personalized plan"}
+              ? copy.submitting
+              : copy.submit}
           </button>
-          <p aria-live="polite" className="text-sm leading-6 text-muted">
+          <p
+            aria-live="polite"
+            className="text-sm leading-6 text-muted dark:text-slate-400"
+          >
             {isSubmitting
-              ? "Generating Alex Carter's personalized plan from your answers."
-              : "You&apos;ll get a simple first-pass plan with the clearest next step to focus on, then you can decide whether to book a call or start in DMs."}
+              ? copy.submittingNote
+              : copy.note}
           </p>
         </div>
       </fieldset>

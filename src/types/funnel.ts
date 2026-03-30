@@ -1,24 +1,4 @@
-export const currentLevelOptions = [
-  "Just getting started",
-  "Back into training after a break",
-  "Training inconsistently",
-  "Training regularly but not seeing results",
-] as const;
-
-export const budgetOptions = [
-  "Under 30,000 HUF/month",
-  "30,000-80,000 HUF/month",
-  "80,000-150,000 HUF/month",
-  "150,000+ HUF/month",
-  "Not sure yet",
-] as const;
-
-export const timeCommitmentOptions = [
-  "2 workouts a week",
-  "3 workouts a week",
-  "4 workouts a week",
-  "5+ workouts a week",
-] as const;
+import type { LanguageCode } from "@/lib/site-preferences";
 
 export type QualificationFormValues = {
   goal: string;
@@ -38,4 +18,5 @@ export type AiPlan = {
 
 export type AiSummaryRequest = {
   answers: QualificationFormValues;
+  language: LanguageCode;
 };

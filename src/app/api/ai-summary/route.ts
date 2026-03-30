@@ -32,6 +32,14 @@ Rules:
 - Avoid hype, guaranteed outcomes, medical claims, injury treatment advice, extreme dieting, or bodybuilding-style language.
 `.trim();
 
+function getLanguageInstruction(language: "en" | "hu") {
+  if (language === "hu") {
+    return "Write every JSON value in natural Hungarian.";
+  }
+
+  return "Write every JSON value in natural English.";
+}
+
 function formatAnswersForPrompt(body: {
   goal: string;
   currentLevel: string;
@@ -90,7 +98,7 @@ export async function POST(request: Request) {
       messages: [
         {
           role: "developer",
-          content: AI_SUMMARY_PROMPT,
+          content: `${AI_SUMMARY_PROMPT}\n- ${getLanguageInstruction(parsedRequest.data.language)}`,
         },
         {
           role: "user",
