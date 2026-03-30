@@ -6,7 +6,7 @@ type HowItWorksSectionProps = {
 
 export function HowItWorksSection({ copy }: HowItWorksSectionProps) {
   return (
-    <section aria-labelledby="how-it-works-title" className="pt-6 sm:pt-8">
+    <section aria-labelledby="how-it-works-title" className="pt-8 sm:pt-12">
       <div className="space-y-8">
         <div className="max-w-2xl space-y-3">
           <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted dark:text-slate-400">

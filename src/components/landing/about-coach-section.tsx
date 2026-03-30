@@ -6,7 +6,7 @@ type AboutCoachSectionProps = {
 
 export function AboutCoachSection({ copy }: AboutCoachSectionProps) {
   return (
-    <section aria-labelledby="about-coach-title" className="pt-6 sm:pt-8">
+    <section aria-labelledby="about-coach-title" className="pt-8 sm:pt-12">
       <div className="rounded-[2rem] border border-panel-border bg-white/74 p-6 shadow-[0_16px_40px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-950/75 sm:p-8">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)] lg:items-start">
           <div className="space-y-4">

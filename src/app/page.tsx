@@ -13,7 +13,7 @@ export default async function Home() {
   const dictionary = getDictionary(language);
 
   return (
-    <main className="pb-16 pt-2 sm:pb-24 sm:pt-4">
+    <main className="pb-20 pt-4 sm:pb-28 sm:pt-6">
       <div className="flex flex-col">
         <HeroSection
           bookingUrl={publicEnv.NEXT_PUBLIC_BOOKING_URL ?? null}

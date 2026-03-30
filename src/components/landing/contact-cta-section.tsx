@@ -19,7 +19,7 @@ export function ContactCtaSection({
   const instagramExternal = Boolean(instagramUrl);
 
   return (
-    <section aria-labelledby="contact-cta-title" className="py-6 sm:py-8">
+    <section aria-labelledby="contact-cta-title" className="py-8 sm:py-12">
       <div className="rounded-[2rem] border border-sky-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(232,244,255,0.82))] p-6 shadow-[0_20px_60px_rgba(14,116,144,0.12)] dark:border-sky-900/50 dark:bg-[linear-gradient(180deg,rgba(15,23,42,0.82),rgba(8,15,28,0.92))] sm:p-8 lg:p-10">
         <div className="max-w-3xl space-y-5">
           <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800 dark:border-sky-900/60 dark:bg-sky-950/60 dark:text-sky-200">
@@ -52,7 +52,7 @@ export function ContactCtaSection({
                 href={bookingHref}
                 className="inline-flex min-h-12 items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700"
               >
-                {copy.fallbackLabel}
+                {copy.bookingLabel}
               </Link>
             )}
 
@@ -70,7 +70,7 @@ export function ContactCtaSection({
                 href={instagramHref}
                 className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
               >
-                {copy.fallbackLabel}
+                {copy.dmLabel}
               </Link>
             )}
 

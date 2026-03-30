@@ -13,7 +13,7 @@ export function FunnelPlaceholderSection({
     <section
       id="free-plan-preview"
       aria-labelledby="free-plan-preview-title"
-      className="scroll-mt-24 py-6 sm:scroll-mt-28 sm:py-8"
+      className="scroll-mt-24 py-8 sm:scroll-mt-28 sm:py-12"
     >
       <div className="rounded-[2rem] border border-sky-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(232,244,255,0.88))] p-6 shadow-[0_20px_60px_rgba(14,116,144,0.12)] dark:border-sky-900/50 dark:bg-[linear-gradient(180deg,rgba(15,23,42,0.82),rgba(8,15,28,0.92))] sm:p-8 lg:p-10">
         <div className="max-w-2xl space-y-4">
