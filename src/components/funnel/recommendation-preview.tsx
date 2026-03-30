@@ -17,7 +17,7 @@ export function RecommendationPreview({
       <div className="space-y-7">
         <div className="space-y-4">
           <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800">
-            AI recommendation
+            Growth audit summary
           </span>
           <h3 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
             {recommendation.title}
@@ -48,7 +48,7 @@ export function RecommendationPreview({
 
         <div className="rounded-2xl border border-sky-200 bg-sky-50/85 p-5">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-800">
-            Next step
+            Suggested next move
           </p>
           <p className="mt-3 text-sm leading-7 text-slate-700 sm:text-base">
             {recommendation.nextStep}

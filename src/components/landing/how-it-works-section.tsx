@@ -1,18 +1,18 @@
 const steps = [
   {
-    title: "Qualify leads",
+    title: "Diagnose the bottleneck",
     description:
-      "Ask a few focused questions so the funnel can separate curiosity from real buying intent.",
+      "Use a short growth audit to surface what is actually slowing down lead quality, positioning, or conversion.",
   },
   {
-    title: "Deliver a personalized recommendation",
+    title: "Deliver a focused audit",
     description:
-      "Use the prospect's answers to present the clearest next step instead of sending everyone the same message.",
+      "Turn the answers into a concise audit summary with a likely constraint and a practical next move.",
   },
   {
-    title: "Drive the booking",
+    title: "Review the next move together",
     description:
-      "Guide qualified people toward the call with less friction and a more confident handoff.",
+      "Guide the right prospects into a strategy call where Alex can help tighten the plan and priorities.",
   },
 ] as const;
 
@@ -25,18 +25,19 @@ export function HowItWorksSection() {
       <div className="space-y-8">
         <div className="max-w-2xl space-y-3">
           <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
-            How it works
+            How the audit works
           </p>
           <h2
             id="how-it-works-title"
             className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
           >
-            A simple flow that turns warm attention into a stronger sales
+            A sharper journey from interest to a more qualified client
             conversation
           </h2>
           <p className="text-base leading-7 text-muted">
-            The landing page sets the expectation, then the funnel does the
-            qualifying and guidance before the booking moment.
+            The page introduces Alex Carter&apos;s approach, then the audit helps
+            a prospect understand what deserves attention before the booking
+            moment.
           </p>
         </div>
 

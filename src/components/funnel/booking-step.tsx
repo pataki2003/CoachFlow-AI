@@ -22,31 +22,31 @@ export function BookingStep({
                 : "border border-amber-200 bg-amber-50 text-amber-700"
             }`}
           >
-            {hasBookingUrl ? "Final step" : "Booking handoff"}
+            {hasBookingUrl ? "Final step" : "Strategy handoff"}
           </span>
 
           <div className="space-y-3">
             <h3 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
               {hasBookingUrl
-                ? "Book your strategy call"
+                ? "Book your audit review call"
                 : "Booking link ready to connect"}
             </h3>
             <p className="max-w-2xl text-sm leading-6 text-muted sm:text-base">
               {hasBookingUrl
-                ? "You've received your recommendation. The next step is a short call to turn it into a focused action plan."
-                : "In a live client version, this is where Calendly or your preferred scheduler would open so qualified leads can book immediately."}
+                ? "You've reviewed the likely bottleneck. The next step is a short strategy call with Alex Carter to review the audit, tighten the plan, and decide what to fix first."
+                : "In a live client version, this is where Calendly or another scheduler would open so a qualified prospect could book with Alex immediately."}
             </p>
           </div>
         </div>
 
         <div className="rounded-2xl border border-slate-200 bg-slate-50/85 p-5">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-            Ready to hand off
+            Ready for the call step
           </p>
           <p className="mt-3 text-sm leading-7 text-slate-700 sm:text-base">
             {email
-              ? `This recommendation has been prepared for ${email}, and the next click moves the prospect into the final booking action.`
-              : "This recommendation is ready, and the next click moves the prospect into the final booking action."}
+              ? `This audit summary has been prepared for ${email}, and the next click moves the prospect into the final strategy call handoff.`
+              : "This audit summary is ready, and the next click moves the prospect into the final strategy call handoff."}
           </p>
         </div>
 
@@ -58,18 +58,18 @@ export function BookingStep({
               rel="noreferrer noopener"
               className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
-              Book your call
+              Book your call with Alex
             </a>
             <button
               type="button"
               onClick={onComplete}
               className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
-              I&apos;ve booked
+              I&apos;ve booked my call
             </button>
             <p className="text-sm leading-6 text-muted">
               After the scheduler opens in a new tab, come back here and confirm
-              the booking to complete the demo flow.
+              the booking to complete the audit journey.
             </p>
           </div>
         ) : (
@@ -82,8 +82,8 @@ export function BookingStep({
               Continue demo
             </button>
             <p className="text-sm leading-6 text-muted">
-              This placeholder keeps the demo believable even before a live
-              booking tool is connected.
+              This keeps the demo believable before a live scheduler is wired
+              into the client version.
             </p>
           </div>
         )}

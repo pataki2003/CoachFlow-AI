@@ -44,15 +44,15 @@ export function EmailCaptureForm({ onSubmit }: EmailCaptureFormProps) {
       <fieldset disabled={isSubmitting} className="space-y-6">
         <div className="space-y-4">
           <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800">
-            Next step
+            Get the full audit
           </span>
           <div className="space-y-3">
             <h3 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
-              Get your full recommendation + next steps
+              Send me the audit + next steps
             </h3>
             <p className="max-w-2xl text-sm leading-6 text-muted sm:text-base">
-              Enter your email to receive your personalized plan and continue to
-              the final step.
+              Enter your email to receive your tailored growth audit and
+              continue to the strategy call step with Alex Carter.
             </p>
           </div>
         </div>
@@ -84,12 +84,12 @@ export function EmailCaptureForm({ onSubmit }: EmailCaptureFormProps) {
             type="submit"
             className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-wait disabled:bg-sky-400"
           >
-            {isSubmitting ? "Saving your next step..." : "Continue"}
+            {isSubmitting ? "Saving your audit step..." : "Continue"}
           </button>
           <p aria-live="polite" className="text-sm leading-6 text-muted">
             {isSubmitting
-              ? "Saving your email locally so the funnel can continue."
-              : "No spam. Just your recommendation and the next action."}
+              ? "Saving your email locally so the audit can continue."
+              : "No spam. Just your audit summary and the next action plan."}
           </p>
         </div>
       </fieldset>

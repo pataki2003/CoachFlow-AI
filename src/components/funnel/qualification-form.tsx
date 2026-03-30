@@ -47,12 +47,12 @@ export function QualificationForm({
           </span>
           <div className="space-y-3">
             <h3 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
-              Answer a few quick questions
+              Answer a few questions for your growth audit
             </h3>
             <p className="max-w-2xl text-sm leading-6 text-muted sm:text-base">
-              This gives the demo enough context to generate a concise,
-              personalized recommendation before the email step continues the
-              funnel.
+              This mini-assessment helps Alex spot the likely bottleneck behind
+              inconsistent leads, unclear positioning, or a weak conversion path
+              before the next step.
             </p>
           </div>
         </div>
@@ -62,12 +62,12 @@ export function QualificationForm({
             htmlFor="goal"
             className="text-sm font-semibold tracking-tight text-slate-900"
           >
-            What is your main goal right now?
+            What growth result matters most right now?
           </label>
           <textarea
             id="goal"
             rows={4}
-            placeholder="Describe the outcome you want most."
+            placeholder="For example: convert more of the right leads into booked calls without constantly chasing more traffic."
             className={cn(getFieldClasses(Boolean(errors.goal)), "leading-7")}
             {...register("goal")}
           />
@@ -83,12 +83,12 @@ export function QualificationForm({
             htmlFor="challenge"
             className="text-sm font-semibold tracking-tight text-slate-900"
           >
-            What is your biggest challenge right now?
+            What feels like the biggest bottleneck right now?
           </label>
           <textarea
             id="challenge"
             rows={4}
-            placeholder="Share the bottleneck that keeps getting in the way."
+            placeholder="For example: the offer feels vague, leads are curious but not qualified, or the funnel loses momentum before the call."
             className={cn(
               getFieldClasses(Boolean(errors.challenge)),
               "leading-7",
@@ -107,12 +107,12 @@ export function QualificationForm({
             htmlFor="triedBefore"
             className="text-sm font-semibold tracking-tight text-slate-900"
           >
-            What have you tried before?
+            What have you already tried to improve it?
           </label>
           <textarea
             id="triedBefore"
             rows={3}
-            placeholder="Mention any tools, programs, or strategies you have already tested."
+            placeholder="Mention any messaging changes, funnels, offers, paid traffic, or sales process tweaks you have already tested."
             className={cn(
               getFieldClasses(Boolean(errors.triedBefore)),
               "leading-7",
@@ -132,7 +132,7 @@ export function QualificationForm({
               htmlFor="timeline"
               className="text-sm font-semibold tracking-tight text-slate-900"
             >
-              How soon do you want results?
+              How soon do you want this working better?
             </label>
             <select
               id="timeline"
@@ -158,7 +158,7 @@ export function QualificationForm({
               htmlFor="budget"
               className="text-sm font-semibold tracking-tight text-slate-900"
             >
-              What budget range are you considering?
+              What level of support are you considering?
             </label>
             <select
               id="budget"
@@ -194,13 +194,13 @@ export function QualificationForm({
             className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-wait disabled:bg-sky-400"
           >
             {isSubmitting
-              ? "Generating your recommendation..."
-              : "Get my recommendation"}
+              ? "Building your growth audit..."
+              : "Get my audit summary"}
           </button>
           <p aria-live="polite" className="text-sm leading-6 text-muted">
             {isSubmitting
-              ? "Generating a concise AI recommendation from your answers."
-              : "This step uses the AI route to create a concise recommendation. Email capture comes next, followed by the booking handoff and final confirmation."}
+              ? "Generating Alex Carter's concise audit summary from your answers."
+              : "This step creates your tailored growth audit. Then you can save the summary, continue to the strategy call handoff, and complete the demo flow."}
           </p>
         </div>
       </fieldset>

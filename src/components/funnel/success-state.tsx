@@ -4,9 +4,9 @@ type SuccessStateProps = {
 };
 
 const recapItems = [
-  "Recommendation prepared",
+  "Audit delivered",
   "Email captured",
-  "Booking handoff completed",
+  "Strategy call handoff completed",
 ] as const;
 
 export function SuccessState({
@@ -22,13 +22,13 @@ export function SuccessState({
           </span>
           <div className="space-y-3">
             <h3 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
-              Your funnel is complete
+              Your growth audit funnel is complete
             </h3>
             <p className="max-w-2xl text-sm leading-6 text-muted sm:text-base">
-              This prospect has moved from interest to qualified action through
-              a guided AI-assisted flow. The recommendation was delivered, the
-              contact was captured{email ? ` at ${email}` : ""}, and the final
-              booking handoff is complete.
+              This prospect has moved from curiosity to a qualified next action
+              through Alex Carter&apos;s guided audit flow. The audit was
+              delivered, the contact was captured{email ? ` at ${email}` : ""},
+              and the final strategy call handoff is complete.
             </p>
           </div>
         </div>
@@ -48,9 +48,13 @@ export function SuccessState({
             Final recap
           </p>
           <p className="mt-3 text-sm leading-7 text-slate-700 sm:text-base">
-            The recommendation <span className="font-semibold text-slate-900">{recommendationTitle}</span> anchored the journey,
-            and the funnel now carries a prospect from qualification through the
-            final action in one clear experience.
+            The audit recommendation{" "}
+            <span className="font-semibold text-slate-900">
+              {recommendationTitle}
+            </span>{" "}
+            anchored the journey, and the funnel now carries a prospect from
+            diagnosis to a stronger coaching conversation in one clear
+            experience.
           </p>
         </div>
       </div>

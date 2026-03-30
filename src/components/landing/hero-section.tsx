@@ -1,7 +1,7 @@
 const proofPoints = [
-  "Filters serious prospects before the call",
-  "Delivers a tailored next step instantly",
-  "Moves warm leads toward booking with less friction",
+  "Clarify the offer your audience can buy",
+  "Spot the bottleneck behind inconsistent leads",
+  "Move the right prospects into a strategy call",
 ] as const;
 
 export function HeroSection() {
@@ -11,22 +11,23 @@ export function HeroSection() {
         <div className="max-w-3xl space-y-8">
           <div className="space-y-5">
             <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800">
-              AI coach funnel demo
+              Alex Carter | Business Growth Coach
             </span>
             <div className="space-y-4">
               <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
-                Built for coaches and consultants
+                For online experts who want better clients
               </p>
               <h1
                 id="hero-title"
                 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
               >
-                Turn your followers into booked calls automatically
+                Turn audience attention into qualified coaching clients
               </h1>
               <p className="max-w-2xl text-base leading-7 text-muted sm:text-lg">
-                A simple AI-powered funnel that qualifies leads, delivers a
-                personalized next step, captures email, and gently moves each
-                prospect toward the booking.
+                Get a tailored 2-minute growth audit that highlights what is
+                likely slowing your conversion and the next move Alex Carter
+                would make to sharpen your offer, positioning, and client
+                journey.
               </p>
             </div>
           </div>
@@ -36,11 +37,11 @@ export function HeroSection() {
               href="#interactive-demo"
               className="inline-flex min-h-12 items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold !text-white transition-colors hover:bg-sky-700"
             >
-              See how it works
+              Start your growth audit
             </a>
             <p className="max-w-md text-sm leading-6 text-muted">
-              A believable demo page for showcasing a high-converting lead
-              qualification flow before the live experience is added.
+              A coach-led demo experience designed to diagnose the real
+              conversion bottleneck before the strategy call ever happens.
             </p>
           </div>
 
