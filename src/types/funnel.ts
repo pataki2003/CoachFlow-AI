@@ -16,7 +16,8 @@ export const budgetOptions = [
 export type FunnelStep =
   | "qualification"
   | "email-capture"
-  | "ready-for-booking";
+  | "booking"
+  | "success";
 
 export type QualificationFormValues = {
   goal: string;

@@ -200,7 +200,7 @@ export function QualificationForm({
           <p aria-live="polite" className="text-sm leading-6 text-muted">
             {isSubmitting
               ? "Generating a concise AI recommendation from your answers."
-              : "This step uses the AI route to create a concise recommendation. Email capture comes next, followed by the booking handoff in Phase 6."}
+              : "This step uses the AI route to create a concise recommendation. Email capture comes next, followed by the booking handoff and final confirmation."}
           </p>
         </div>
       </fieldset>

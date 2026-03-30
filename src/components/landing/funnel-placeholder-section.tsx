@@ -1,3 +1,4 @@
+import { publicEnv } from "@/lib/env";
 import { QualificationFunnel } from "@/components/funnel/qualification-funnel";
 
 export function FunnelPlaceholderSection() {
@@ -20,11 +21,11 @@ export function FunnelPlaceholderSection() {
           </h2>
           <p className="text-base leading-7 text-muted sm:text-lg">
             Answer a few quick questions to preview how the funnel will shape a
-            recommendation, then continue into the email step that prepares the
-            final booking handoff.
+            recommendation, collect an email, and move into the final booking
+            handoff.
           </p>
         </div>
-        <QualificationFunnel />
+        <QualificationFunnel bookingUrl={publicEnv.NEXT_PUBLIC_BOOKING_URL ?? null} />
       </div>
     </section>
   );

@@ -4,10 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { BookingReadyState } from "@/components/funnel/booking-ready-state";
+import { BookingStep } from "@/components/funnel/booking-step";
 import { EmailCaptureForm } from "@/components/funnel/email-capture-form";
 import { QualificationForm } from "@/components/funnel/qualification-form";
 import { RecommendationPreview } from "@/components/funnel/recommendation-preview";
+import { SuccessState } from "@/components/funnel/success-state";
 import {
   aiRecommendationSchema,
   qualificationFormSchema,
@@ -41,7 +42,13 @@ function getApiErrorMessage(payload: unknown) {
   return "Unable to generate a recommendation right now. Please try again.";
 }
 
-export function QualificationFunnel() {
+type QualificationFunnelProps = {
+  bookingUrl: string | null;
+};
+
+export function QualificationFunnel({
+  bookingUrl,
+}: QualificationFunnelProps) {
   const [capturedEmail, setCapturedEmail] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [recommendation, setRecommendation] = useState<AiRecommendation | null>(
@@ -95,7 +102,11 @@ export function QualificationFunnel() {
   async function handleEmailSubmit(values: EmailCaptureValues) {
     await new Promise((resolve) => setTimeout(resolve, 450));
     setCapturedEmail(values.email);
-    setStep("ready-for-booking");
+    setStep("booking");
+  }
+
+  function handleBookingComplete() {
+    setStep("success");
   }
 
   return (
@@ -115,8 +126,14 @@ export function QualificationFunnel() {
 
           {step === "email-capture" ? (
             <EmailCaptureForm onSubmit={handleEmailSubmit} />
+          ) : step === "booking" ? (
+            <BookingStep
+              bookingUrl={bookingUrl}
+              email={capturedEmail}
+              onComplete={handleBookingComplete}
+            />
           ) : (
-            <BookingReadyState
+            <SuccessState
               email={capturedEmail}
               recommendationTitle={recommendation.title}
             />
