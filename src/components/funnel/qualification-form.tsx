@@ -8,6 +8,7 @@ import {
 } from "@/types/funnel";
 
 type QualificationFormProps = {
+  errorMessage?: string | null;
   form: UseFormReturn<QualificationFormValues>;
   onSubmit: (values: QualificationFormValues) => Promise<void>;
 };
@@ -23,6 +24,7 @@ function getFieldClasses(hasError: boolean) {
 }
 
 export function QualificationForm({
+  errorMessage,
   form,
   onSubmit,
 }: QualificationFormProps) {
@@ -48,8 +50,9 @@ export function QualificationForm({
               Answer a few quick questions
             </h3>
             <p className="max-w-2xl text-sm leading-6 text-muted sm:text-base">
-              This gives the demo enough context to show a structured preview of
-              the recommendation experience.
+              This gives the demo enough context to generate a concise,
+              personalized recommendation before the later funnel steps are
+              added.
             </p>
           </div>
         </div>
@@ -178,18 +181,26 @@ export function QualificationForm({
         </div>
 
         <div className="space-y-3 pt-3">
+          {errorMessage ? (
+            <div
+              role="alert"
+              className="rounded-2xl border border-rose-200 bg-rose-50/90 px-4 py-3 text-sm font-medium text-rose-700"
+            >
+              {errorMessage}
+            </div>
+          ) : null}
           <button
             type="submit"
             className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-wait disabled:bg-sky-400"
           >
             {isSubmitting
-              ? "Preparing your recommendation preview..."
-              : "See my recommendation preview"}
+              ? "Generating your recommendation..."
+              : "Get my recommendation"}
           </button>
           <p aria-live="polite" className="text-sm leading-6 text-muted">
             {isSubmitting
-              ? "Building a local preview based on your answers."
-              : "This phase stays fully local. No backend or AI call happens yet."}
+              ? "Generating a concise AI recommendation from your answers."
+              : "This step now uses the AI route to create a concise recommendation. Email capture and booking come in later phases."}
           </p>
         </div>
       </fieldset>

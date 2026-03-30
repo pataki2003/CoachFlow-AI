@@ -1,10 +1,10 @@
 import type {
+  AiRecommendation,
   QualificationFormValues,
-  RecommendationPreviewData,
 } from "@/types/funnel";
 
 type RecommendationPreviewProps = {
-  recommendation: RecommendationPreviewData;
+  recommendation: AiRecommendation;
   values: QualificationFormValues;
 };
 
@@ -17,7 +17,7 @@ export function RecommendationPreview({
       <div className="space-y-7">
         <div className="space-y-4">
           <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800">
-            {recommendation.badge}
+            AI recommendation
           </span>
           <h3 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
             {recommendation.title}
