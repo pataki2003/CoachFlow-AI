@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CoachFlow AI",
+  title: "Alex Carter | Business Growth Coach",
   description:
-    "Coach-led AI funnel demo for personalized growth plans and direct conversion handoffs.",
+    "Personalized growth plans for online coaches who want clearer positioning, better-fit leads, and a stronger path to booked clients.",
 };
 
 export default function RootLayout({

@@ -34,11 +34,11 @@ export function RecommendationPreview({
       value: plan.goalClarity,
     },
     {
-      label: "Biggest bottleneck",
+      label: "Main bottleneck",
       value: plan.biggestBottleneck,
     },
     {
-      label: "What to focus on next 7 days",
+      label: "Focus for the next 7 days",
       value: plan.focusNext7Days,
     },
     {
@@ -61,8 +61,9 @@ export function RecommendationPreview({
             Here&apos;s where Alex would focus first
           </h3>
           <p className="text-base leading-7 text-muted sm:text-lg">
-            Based on your answers, CoachFlow AI has mapped out a simple next
-            step plan to help you attract more of the right coaching clients.
+            Based on what you shared, this is the kind of first-pass guidance
+            Alex would use to clarify the next move before changing everything
+            at once.
           </p>
         </div>
 
@@ -102,10 +103,10 @@ export function RecommendationPreview({
           <div className="space-y-4">
             <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-800">
-                Ready to take this further?
+                Continue with Alex
               </p>
               <h4 className="text-xl font-semibold tracking-tight text-slate-950">
-                Turn this plan into your next client move
+                Want help applying this plan?
               </h4>
               <p className="text-sm leading-7 text-slate-700 sm:text-base">
                 {plan.softCta}
@@ -120,14 +121,14 @@ export function RecommendationPreview({
                   rel="noreferrer noopener"
                   className="inline-flex min-h-12 items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-50"
                 >
-                  Book a call
+                  Book a strategy call
                 </a>
               ) : (
                 <button
                   type="button"
                   className="inline-flex min-h-12 items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors"
                 >
-                  Book a call
+                  Book a strategy call
                 </button>
               )}
 
@@ -138,22 +139,22 @@ export function RecommendationPreview({
                   rel="noreferrer noopener"
                   className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-50"
                 >
-                  DM on Instagram
+                  DM Alex on Instagram
                 </a>
               ) : (
                 <button
                   type="button"
                   className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition-colors"
                 >
-                  DM on Instagram
+                  DM Alex on Instagram
                 </button>
               )}
             </div>
 
             {!hasBookingUrl || !hasInstagramUrl ? (
               <p className="text-sm leading-6 text-muted">
-                In a live client setup, these buttons connect directly to
-                Alex&apos;s scheduler and Instagram inbox.
+                These actions are ready to connect directly to Alex&apos;s
+                booking page and Instagram inbox.
               </p>
             ) : null}
           </div>

@@ -1,13 +1,13 @@
 const credibilityPoints = [
-  "Helps online coaches tighten their offer before they chase more traffic.",
-  "Focuses on better-fit leads, clearer messaging, and smoother conversion paths.",
-  "Uses short personalized plans to make the next move obvious before the call.",
+  "Works with online coaches and service experts who are getting attention but not enough right-fit inquiries.",
+  "Helps simplify positioning, offers, and conversion flow before adding more marketing volume.",
+  "Uses short personalized planning to make the next move easier to trust before a strategy call.",
 ] as const;
 
 const focusAreas = [
-  "Clearer offers",
-  "Better-fit leads",
-  "Stronger conversion flow",
+  "Positioning",
+  "Messaging",
+  "Client conversion",
 ] as const;
 
 export function AboutCoachSection() {
@@ -17,20 +17,22 @@ export function AboutCoachSection() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)] lg:items-start">
           <div className="space-y-4">
             <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
-              About Alex Carter
+              Who Alex helps
             </p>
             <div className="space-y-3">
               <h2
                 id="about-coach-title"
                 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
               >
-                Alex helps online coaches turn attention into real client
-                demand.
+                Better positioning, stronger messaging, and a simpler path to
+                qualified clients.
               </h2>
               <p className="max-w-2xl text-base leading-7 text-muted">
-                Through clearer positioning, sharper offers, and a simpler path
-                from interest to inquiry, Alex Carter helps coaches attract more
-                qualified clients without piling on more complexity.
+                Alex Carter helps online coaches, creators, and consultants who
+                already have skill and credibility but need a cleaner way to
+                turn interest into real sales conversations. The focus is
+                practical: clarify the offer, remove friction, and guide the
+                right people toward the next step.
               </p>
             </div>
           </div>
@@ -38,7 +40,7 @@ export function AboutCoachSection() {
           <div className="space-y-4">
             <div className="rounded-[1.75rem] border border-slate-200 bg-slate-50/85 p-5">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-                What Alex focuses on
+                What the work usually improves
               </p>
               <ul className="mt-4 space-y-3">
                 {credibilityPoints.map((point) => (

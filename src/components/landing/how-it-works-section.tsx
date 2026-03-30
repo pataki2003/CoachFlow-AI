@@ -1,18 +1,18 @@
 const steps = [
   {
-    title: "Share where you're stuck",
+    title: "Share where things feel stuck",
     description:
-      "Answer a few fast questions about your goals, current level, and the part of your client journey that feels off.",
+      "Answer a few quick questions about your goals, your current stage, and what feels off in your client journey.",
   },
   {
-    title: "Get your personalized plan",
+    title: "Get a focused first-pass plan",
     description:
-      "CoachFlow AI turns your answers into a clear plan Alex Carter would use to focus the next seven days.",
+      "Alex's AI-powered intake turns your answers into a concise plan that highlights the likely bottleneck and what to fix first.",
   },
   {
-    title: "Take the next step",
+    title: "Choose the next step with Alex",
     description:
-      "If the plan resonates, move straight into a call or DM so the conversation keeps momentum.",
+      "If the plan resonates, book a strategy call or send a quick DM so the conversation can move into real support.",
   },
 ] as const;
 
@@ -22,18 +22,18 @@ export function HowItWorksSection() {
       <div className="space-y-8">
         <div className="max-w-2xl space-y-3">
           <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
-            How CoachFlow AI works
+            How the process works
           </p>
           <h2
             id="how-it-works-title"
             className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
           >
-            A simpler path from coach interest to real conversion
+            Start with clarity before you commit to the deeper work
           </h2>
           <p className="text-base leading-7 text-muted">
-            The page introduces Alex Carter&apos;s approach, the plan clarifies
-            what to fix first, and the result view makes the next action easy to
-            take.
+            The personalized plan is designed to make the next move easier to
+            see, so you can quickly decide whether to apply it yourself or work
+            through it with Alex.
           </p>
         </div>
 

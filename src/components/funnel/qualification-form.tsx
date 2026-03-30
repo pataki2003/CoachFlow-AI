@@ -44,15 +44,16 @@ export function QualificationForm({
       <fieldset disabled={isSubmitting} className="space-y-6 sm:space-y-7">
         <div className="space-y-4">
           <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800">
-            CoachFlow AI plan
+            Free personalized plan
           </span>
           <div className="space-y-3">
             <h3 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
-              Tell Alex what you want help with
+              Answer a few quick questions
             </h3>
             <p className="max-w-2xl text-sm leading-6 text-muted sm:text-base">
-              Answer a few focused questions and CoachFlow AI will turn them
-              into a personalized client-growth plan you can act on right away.
+              This short intake helps Alex pinpoint where your client growth may
+              be getting stuck, then turn that into a personalized plan you can
+              use right away.
             </p>
           </div>
         </div>
@@ -62,12 +63,12 @@ export function QualificationForm({
             htmlFor="goal"
             className="text-sm font-semibold tracking-tight text-slate-900"
           >
-            What result do you want most from your coaching business?
+            What result do you want most over the next few months?
           </label>
           <textarea
             id="goal"
             rows={4}
-            placeholder="For example: sign more qualified clients without constantly posting more or chasing cold leads."
+            placeholder="For example: sign more qualified clients without relying on constant posting, referrals, or chasing cold leads."
             className={cn(getFieldClasses(Boolean(errors.goal)), "leading-7")}
             {...register("goal")}
           />
@@ -83,7 +84,7 @@ export function QualificationForm({
             htmlFor="currentLevel"
             className="text-sm font-semibold tracking-tight text-slate-900"
           >
-            Which stage best describes you right now?
+            Which stage best describes your business right now?
           </label>
           <select
             id="currentLevel"
@@ -109,12 +110,12 @@ export function QualificationForm({
             htmlFor="biggestStruggle"
             className="text-sm font-semibold tracking-tight text-slate-900"
           >
-            What is your biggest struggle right now?
+            What feels like the biggest bottleneck right now?
           </label>
           <textarea
             id="biggestStruggle"
             rows={4}
-            placeholder="For example: inconsistent leads, unclear messaging, a weak offer, or trouble turning interest into booked calls."
+            placeholder="For example: inconsistent inquiries, unclear messaging, a weak offer, or too much drop-off before people book."
             className={cn(
               getFieldClasses(Boolean(errors.biggestStruggle)),
               "leading-7",
@@ -195,12 +196,14 @@ export function QualificationForm({
             type="submit"
             className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-wait disabled:bg-sky-400"
           >
-            {isSubmitting ? "Building your plan..." : "Get my plan"}
+            {isSubmitting
+              ? "Building your personalized plan..."
+              : "Get my personalized plan"}
           </button>
           <p aria-live="polite" className="text-sm leading-6 text-muted">
             {isSubmitting
               ? "Generating Alex Carter's personalized plan from your answers."
-              : "This step creates your personalized plan. When it feels aligned, the next move is simple: book a call or start the conversation in DMs."}
+              : "You&apos;ll get a concise first-pass plan with the clearest next move to focus on, then you can decide whether to book a call or start in DMs."}
           </p>
         </div>
       </fieldset>
