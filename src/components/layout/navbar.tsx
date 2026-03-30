@@ -31,11 +31,11 @@ export function Navbar({
 
   return (
     <header className="sticky top-0 z-40 py-4">
-      <div className="rounded-[1.5rem] border border-slate-200/80 bg-white/85 px-4 py-3 shadow-[0_12px_40px_rgba(15,23,42,0.06)] backdrop-blur dark:border-white/10 dark:bg-slate-950/80">
+      <div className="navbar-shell rounded-[1.5rem] px-4 py-3">
         <div className="flex items-center justify-between gap-4">
           <Link
             href="/"
-            className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-900 dark:text-slate-100"
+            className="text-sm font-semibold uppercase tracking-[0.24em] text-foreground"
           >
             {copy.siteName}
           </Link>
@@ -52,8 +52,8 @@ export function Navbar({
                     href={item.href}
                     className={`inline-flex min-h-11 items-center justify-center rounded-full px-4 text-sm font-medium transition-colors ${
                       isActive
-                        ? "bg-sky-600 text-white"
-                        : "text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-white/10"
+                        ? "button-primary"
+                        : "control-pill"
                     }`}
                   >
                     {label}
@@ -79,14 +79,14 @@ export function Navbar({
             type="button"
             onClick={() => setIsOpen((open) => !open)}
             aria-expanded={isOpen}
-            className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 md:hidden dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
+            className="button-secondary inline-flex min-h-11 items-center justify-center rounded-full px-4 text-sm font-semibold md:hidden"
           >
             {copy.menuLabel}
           </button>
         </div>
 
         {isOpen ? (
-          <div className="mt-4 space-y-3 border-t border-slate-200 pt-4 md:hidden dark:border-white/10">
+          <div className="mt-4 space-y-3 border-t border-[color:var(--border-subtle)] pt-4 md:hidden">
             <nav className="grid gap-2">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
@@ -99,8 +99,8 @@ export function Navbar({
                     onClick={() => setIsOpen(false)}
                     className={`inline-flex min-h-11 items-center justify-center rounded-full px-4 text-sm font-medium transition-colors ${
                       isActive
-                        ? "bg-sky-600 text-white"
-                        : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:bg-white/10"
+                        ? "button-primary"
+                        : "button-secondary"
                     }`}
                   >
                     {label}

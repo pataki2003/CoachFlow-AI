@@ -47,7 +47,7 @@ export function ThemeToggle({
       type="button"
       onClick={handleToggle}
       aria-label={theme === "light" ? switchToDarkLabel : switchToLightLabel}
-      className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
+      className="button-secondary inline-flex min-h-11 items-center justify-center rounded-full px-4 text-sm font-semibold"
     >
       {theme === "light" ? darkModeText : lightModeText}
     </button>

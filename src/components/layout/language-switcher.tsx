@@ -42,7 +42,7 @@ export function LanguageSwitcher({
   return (
     <div
       aria-label={label}
-      className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white p-1 dark:border-white/10 dark:bg-white/5"
+      className="control-group inline-flex items-center gap-1 rounded-full p-1"
     >
       {(["en", "hu"] as const).map((option) => (
         <button
@@ -51,8 +51,8 @@ export function LanguageSwitcher({
           onClick={() => handleChange(option)}
           className={`inline-flex min-h-9 min-w-11 items-center justify-center rounded-full px-3 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
             language === option
-              ? "bg-sky-600 text-white"
-              : "text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-white/10"
+              ? "control-pill control-pill-active"
+              : "control-pill"
           }`}
         >
           {option}

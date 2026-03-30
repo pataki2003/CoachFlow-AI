@@ -18,16 +18,16 @@ export function GallerySection({ copy }: GallerySectionProps) {
     <section aria-labelledby="gallery-title" className="pt-8 sm:pt-12">
       <div className="space-y-8">
         <div className="max-w-2xl space-y-3">
-          <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted dark:text-slate-400">
+          <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
             {copy.badge}
           </p>
           <h2
             id="gallery-title"
-            className="text-3xl font-semibold tracking-tight text-balance text-slate-950 dark:text-slate-50 sm:text-4xl"
+            className="text-3xl font-semibold tracking-tight text-balance text-foreground sm:text-4xl"
           >
             {copy.title}
           </h2>
-          <p className="text-base leading-7 text-muted dark:text-slate-300">
+          <p className="text-base leading-7 text-muted">
             {copy.body}
           </p>
         </div>
@@ -36,7 +36,7 @@ export function GallerySection({ copy }: GallerySectionProps) {
           {copy.items.map((item, index) => (
             <article
               key={item.title}
-              className="overflow-hidden rounded-[1.75rem] border border-panel-border bg-white/80 shadow-[0_16px_40px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-950/75"
+              className="surface-card overflow-hidden rounded-[1.75rem]"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
@@ -48,10 +48,10 @@ export function GallerySection({ copy }: GallerySectionProps) {
                 />
               </div>
               <div className="space-y-3 p-5">
-                <h3 className="text-xl font-semibold tracking-tight text-slate-950 dark:text-slate-50">
+                <h3 className="text-xl font-semibold tracking-tight text-foreground">
                   {item.title}
                 </h3>
-                <p className="text-sm leading-6 text-muted dark:text-slate-300 sm:text-base">
+                <p className="text-sm leading-6 text-muted sm:text-base">
                   {item.description}
                 </p>
               </div>

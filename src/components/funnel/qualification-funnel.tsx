@@ -96,7 +96,7 @@ export function QualificationFunnel({
   }
 
   return (
-    <div className="mt-10 rounded-[1.75rem] border border-dashed border-slate-300/90 bg-white/68 p-5 dark:border-white/10 dark:bg-slate-950/60 sm:mt-12 sm:p-6 lg:p-10">
+    <div className="surface-soft mt-10 rounded-[1.75rem] border-dashed p-5 sm:mt-12 sm:p-6 lg:p-10">
       {plan && submittedValues ? (
         <RecommendationPreview
           bookingUrl={bookingUrl}
