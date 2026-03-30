@@ -34,7 +34,7 @@ export function HeroSection() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href="#interactive-demo"
-              className="inline-flex min-h-12 items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold !text-white transition-colors hover:bg-sky-700"
             >
               See how it works
             </a>

@@ -62,7 +62,7 @@ export function QualificationFunnel() {
   }
 
   return (
-    <div className="mt-8 rounded-[1.75rem] border border-dashed border-slate-300/90 bg-white/68 p-5 sm:p-6 lg:p-8">
+    <div className="mt-10 rounded-[1.75rem] border border-dashed border-slate-300/90 bg-white/68 p-5 sm:mt-12 sm:p-6 lg:p-10">
       {submittedValues ? (
         <RecommendationPreview
           recommendation={buildRecommendationPreview(submittedValues)}

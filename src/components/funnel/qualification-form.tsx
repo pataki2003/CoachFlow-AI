@@ -36,14 +36,14 @@ export function QualificationForm({
     <form
       noValidate
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-[1.75rem] border border-white/80 bg-white/82 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.08)] sm:p-8"
+      className="rounded-[1.75rem] border border-white/80 bg-white/82 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.08)] sm:p-8 lg:p-10"
     >
-      <fieldset disabled={isSubmitting} className="space-y-5">
-        <div className="space-y-3">
+      <fieldset disabled={isSubmitting} className="space-y-6 sm:space-y-7">
+        <div className="space-y-4">
           <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800">
             Step 1 of 3
           </span>
-          <div className="space-y-2">
+          <div className="space-y-3">
             <h3 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
               Answer a few quick questions
             </h3>
@@ -54,7 +54,7 @@ export function QualificationForm({
           </div>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           <label
             htmlFor="goal"
             className="text-sm font-semibold tracking-tight text-slate-900"
@@ -65,15 +65,17 @@ export function QualificationForm({
             id="goal"
             rows={4}
             placeholder="Describe the outcome you want most."
-            className={getFieldClasses(Boolean(errors.goal))}
+            className={cn(getFieldClasses(Boolean(errors.goal)), "leading-7")}
             {...register("goal")}
           />
           {errors.goal ? (
-            <p className="text-sm text-rose-600">{errors.goal.message}</p>
+            <p className="text-sm font-medium text-rose-700">
+              {errors.goal.message}
+            </p>
           ) : null}
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           <label
             htmlFor="challenge"
             className="text-sm font-semibold tracking-tight text-slate-900"
@@ -84,15 +86,20 @@ export function QualificationForm({
             id="challenge"
             rows={4}
             placeholder="Share the bottleneck that keeps getting in the way."
-            className={getFieldClasses(Boolean(errors.challenge))}
+            className={cn(
+              getFieldClasses(Boolean(errors.challenge)),
+              "leading-7",
+            )}
             {...register("challenge")}
           />
           {errors.challenge ? (
-            <p className="text-sm text-rose-600">{errors.challenge.message}</p>
+            <p className="text-sm font-medium text-rose-700">
+              {errors.challenge.message}
+            </p>
           ) : null}
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           <label
             htmlFor="triedBefore"
             className="text-sm font-semibold tracking-tight text-slate-900"
@@ -103,18 +110,21 @@ export function QualificationForm({
             id="triedBefore"
             rows={3}
             placeholder="Mention any tools, programs, or strategies you have already tested."
-            className={getFieldClasses(Boolean(errors.triedBefore))}
+            className={cn(
+              getFieldClasses(Boolean(errors.triedBefore)),
+              "leading-7",
+            )}
             {...register("triedBefore")}
           />
           {errors.triedBefore ? (
-            <p className="text-sm text-rose-600">
+            <p className="text-sm font-medium text-rose-700">
               {errors.triedBefore.message}
             </p>
           ) : null}
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          <div className="space-y-2">
+        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
+          <div className="space-y-2.5">
             <label
               htmlFor="timeline"
               className="text-sm font-semibold tracking-tight text-slate-900"
@@ -134,11 +144,13 @@ export function QualificationForm({
               ))}
             </select>
             {errors.timeline ? (
-              <p className="text-sm text-rose-600">{errors.timeline.message}</p>
+              <p className="text-sm font-medium text-rose-700">
+                {errors.timeline.message}
+              </p>
             ) : null}
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-2.5">
             <label
               htmlFor="budget"
               className="text-sm font-semibold tracking-tight text-slate-900"
@@ -158,12 +170,14 @@ export function QualificationForm({
               ))}
             </select>
             {errors.budget ? (
-              <p className="text-sm text-rose-600">{errors.budget.message}</p>
+              <p className="text-sm font-medium text-rose-700">
+                {errors.budget.message}
+              </p>
             ) : null}
           </div>
         </div>
 
-        <div className="space-y-3 pt-2">
+        <div className="space-y-3 pt-3">
           <button
             type="submit"
             className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-wait disabled:bg-sky-400"

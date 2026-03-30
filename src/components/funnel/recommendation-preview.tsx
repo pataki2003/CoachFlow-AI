@@ -13,9 +13,9 @@ export function RecommendationPreview({
   values,
 }: RecommendationPreviewProps) {
   return (
-    <article className="rounded-[1.75rem] border border-white/80 bg-white/82 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.08)] sm:p-8">
-      <div className="space-y-6">
-        <div className="space-y-3">
+    <article className="rounded-[1.75rem] border border-white/80 bg-white/82 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.08)] sm:p-8 lg:p-10">
+      <div className="space-y-7">
+        <div className="space-y-4">
           <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800">
             {recommendation.badge}
           </span>
