@@ -1,6 +1,10 @@
 import { z } from "zod";
 
-import { budgetOptions, timelineOptions } from "@/types/funnel";
+import {
+  budgetOptions,
+  currentLevelOptions,
+  timeCommitmentOptions,
+} from "@/types/funnel";
 
 export const qualificationFormSchema = z.object({
   goal: z
@@ -8,58 +12,65 @@ export const qualificationFormSchema = z.object({
     .trim()
     .min(10, "Enter at least 10 characters.")
     .max(500, "Keep this under 500 characters."),
-  challenge: z
+  currentLevel: z
+    .string()
+    .trim()
+    .min(1, "Select your current level.")
+    .refine(
+      (value) => (currentLevelOptions as readonly string[]).includes(value),
+      "Select your current level.",
+    ),
+  biggestStruggle: z
     .string()
     .trim()
     .min(10, "Enter at least 10 characters.")
     .max(500, "Keep this under 500 characters."),
-  triedBefore: z
+  timeCommitment: z
     .string()
     .trim()
-    .min(5, "Enter at least 5 characters.")
-    .max(500, "Keep this under 500 characters."),
-  timeline: z
-    .string()
-    .trim()
-    .min(1, "Select a timeline.")
+    .min(1, "Select your time commitment.")
     .refine(
-      (value) => (timelineOptions as readonly string[]).includes(value),
-      "Select a timeline.",
+      (value) => (timeCommitmentOptions as readonly string[]).includes(value),
+      "Select your time commitment.",
     ),
   budget: z
     .string()
     .trim()
-    .min(1, "Select a budget.")
     .refine(
-      (value) => (budgetOptions as readonly string[]).includes(value),
-      "Select a budget.",
-  ),
+      (value) =>
+        value === "" || (budgetOptions as readonly string[]).includes(value),
+      "Select a valid budget range or leave it blank.",
+    ),
 });
-
-export const emailCaptureSchema = z.object({
-  email: z.string().trim().email("Enter a valid email address."),
-});
-
-export const leadCaptureSchema = emailCaptureSchema;
 
 export const aiSummaryRequestSchema = z.object({
   answers: qualificationFormSchema,
 });
 
-export const aiRecommendationSchema = z.object({
-  title: z
+export const aiPlanSchema = z.object({
+  goalClarity: z
     .string()
     .trim()
-    .min(4, "Recommendation title is too short.")
-    .max(80, "Recommendation title is too long."),
-  summary: z
+    .min(20, "Goal clarity is too short.")
+    .max(240, "Goal clarity is too long."),
+  biggestBottleneck: z
     .string()
     .trim()
-    .min(20, "Recommendation summary is too short.")
-    .max(700, "Recommendation summary is too long."),
-  nextStep: z
+    .min(20, "Biggest bottleneck is too short.")
+    .max(260, "Biggest bottleneck is too long."),
+  focusNext7Days: z
     .string()
     .trim()
-    .min(10, "Recommendation next step is too short.")
-    .max(240, "Recommendation next step is too long."),
+    .min(20, "Focus for the next 7 days is too short.")
+    .max(260, "Focus for the next 7 days is too long."),
+  simplePlan: z
+    .string()
+    .trim()
+    .min(40, "Simple plan is too short.")
+    .max(520, "Simple plan is too long."),
+  softCta: z
+    .string()
+    .trim()
+    .min(10, "Soft CTA is too short.")
+    .max(220, "Soft CTA is too long."),
 });

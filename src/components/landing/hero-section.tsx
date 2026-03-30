@@ -1,7 +1,7 @@
 const proofPoints = [
-  "Clarify the offer your audience can buy",
-  "Spot the bottleneck behind inconsistent leads",
-  "Move the right prospects into a strategy call",
+  "Clarify what brings in clients",
+  "See what is slowing conversions down",
+  "Know your next best move fast",
 ] as const;
 
 export function HeroSection() {
@@ -11,23 +11,22 @@ export function HeroSection() {
         <div className="max-w-3xl space-y-8">
           <div className="space-y-5">
             <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800">
-              Alex Carter | Business Growth Coach
+              CoachFlow AI | Alex Carter
             </span>
             <div className="space-y-4">
               <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
-                For online experts who want better clients
+                Business growth coach for online coaches
               </p>
               <h1
                 id="hero-title"
                 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
               >
-                Turn audience attention into qualified coaching clients
+                Get a personalized plan to attract more coaching clients
               </h1>
               <p className="max-w-2xl text-base leading-7 text-muted sm:text-lg">
-                Get a tailored 2-minute growth audit that highlights what is
-                likely slowing your conversion and the next move Alex Carter
-                would make to sharpen your offer, positioning, and client
-                journey.
+                Answer a few quick questions and CoachFlow AI will map out what
+                Alex Carter would focus on first to improve your offer,
+                messaging, and client conversion flow.
               </p>
             </div>
           </div>
@@ -37,11 +36,11 @@ export function HeroSection() {
               href="#interactive-demo"
               className="inline-flex min-h-12 items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold !text-white transition-colors hover:bg-sky-700"
             >
-              Start your growth audit
+              Get my plan
             </a>
             <p className="max-w-md text-sm leading-6 text-muted">
-              A coach-led demo experience designed to diagnose the real
-              conversion bottleneck before the strategy call ever happens.
+              A coach-led demo page designed to turn curiosity into a clear next
+              step: book a call or start the conversation in DMs.
             </p>
           </div>
 

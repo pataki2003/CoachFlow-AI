@@ -7,45 +7,44 @@ import {
   AI_SUMMARY_REASONING_EFFORT,
   getOpenAIClient,
 } from "@/lib/openai";
-import {
-  aiRecommendationSchema,
-  aiSummaryRequestSchema,
-} from "@/lib/validations/funnel";
+import { aiPlanSchema, aiSummaryRequestSchema } from "@/lib/validations/funnel";
 
 const AI_SUMMARY_PROMPT = `
-You are Alex Carter's concise business growth audit assistant.
+You are Alex Carter's concise business growth planning assistant.
 
-Use the submitted answers to write a short personalized growth audit summary for an online expert who may be a fit for Alex Carter's business growth coaching.
+Use the submitted answers to write a short personalized plan for an online coach who wants more qualified clients.
 
 Rules:
 - Return valid JSON only.
 - Do not include markdown, code fences, bullets, or extra keys.
-- Use exactly these keys: title, summary, nextStep.
-- Title should usually be 4 to 8 words.
-- Summary should be 2 to 4 sentences.
-- NextStep should be 1 to 2 sentences.
-- Reflect the user's goal, challenge, what they have tried, timeline, and budget when relevant.
-- Identify the most likely business bottleneck without sounding alarmist.
+- Use exactly these keys: goalClarity, biggestBottleneck, focusNext7Days, simplePlan, softCta.
+- Keep every field concise, readable, and action-oriented.
+- Reflect the user's goal, current level, biggest struggle, time commitment, and budget when relevant.
+- goalClarity should clarify what they actually need to achieve next.
+- biggestBottleneck should identify the most likely business bottleneck without sounding alarmist.
+- focusNext7Days should explain the highest-leverage focus for the next week.
+- simplePlan should be a short practical plan, not a long essay.
+- softCta should feel like a natural invitation to book a call or DM Alex if they want help implementing the plan.
 - When relevant, frame the bottleneck around positioning, offer clarity, lead quality, or conversion flow.
 - Keep the tone clear, practical, concise, premium, and professional.
-- Write like a trusted business growth coach, not a generic SaaS tool.
-- Make the next step feel like a useful coaching move, not a hard sell.
+- Write like a trusted business growth coach for online coaches, not a generic SaaS tool.
+- Do not promise results or use manipulative language.
 - Avoid hype, guaranteed outcomes, manipulative phrasing, medical claims, legal claims, financial promises, or extreme language.
 `.trim();
 
 function formatAnswersForPrompt(body: {
   goal: string;
-  challenge: string;
-  triedBefore: string;
-  timeline: string;
-  budget: string;
+  currentLevel: string;
+  biggestStruggle: string;
+  timeCommitment: string;
+  budget?: string;
 }) {
   return [
     `Goal: ${body.goal}`,
-    `Challenge: ${body.challenge}`,
-    `Tried before: ${body.triedBefore}`,
-    `Timeline: ${body.timeline}`,
-    `Budget: ${body.budget}`,
+    `Current level: ${body.currentLevel}`,
+    `Biggest struggle: ${body.biggestStruggle}`,
+    `Time commitment: ${body.timeCommitment}`,
+    `Budget: ${body.budget || "Not specified"}`,
   ].join("\n");
 }
 
@@ -65,7 +64,7 @@ export async function POST(request: Request) {
 
   if (!parsedRequest.success) {
     return NextResponse.json(
-      { error: "Please complete all qualification answers." },
+      { error: "Please complete all plan answers." },
       { status: 400 },
     );
   }
@@ -78,7 +77,7 @@ export async function POST(request: Request) {
     console.error("OpenAI client configuration error:", error);
 
     return NextResponse.json(
-      { error: "AI recommendations are not configured yet." },
+      { error: "AI plans are not configured yet." },
       { status: 500 },
     );
   }
@@ -87,7 +86,7 @@ export async function POST(request: Request) {
     const completion = await openaiClient.chat.completions.parse({
       model: AI_SUMMARY_MODEL,
       reasoning_effort: AI_SUMMARY_REASONING_EFFORT,
-      max_completion_tokens: 240,
+      max_completion_tokens: 420,
       messages: [
         {
           role: "developer",
@@ -98,25 +97,21 @@ export async function POST(request: Request) {
           content: formatAnswersForPrompt(parsedRequest.data.answers),
         },
       ],
-      response_format: zodResponseFormat(
-        aiRecommendationSchema,
-        "coach_funnel_recommendation",
-      ),
+      response_format: zodResponseFormat(aiPlanSchema, "coachflow_ai_plan"),
     });
 
-    const recommendation = completion.choices[0]?.message.parsed;
+    const plan = completion.choices[0]?.message.parsed;
 
-    if (!recommendation) {
+    if (!plan) {
       return NextResponse.json(
         {
-          error:
-            "The recommendation could not be generated in the expected format.",
+          error: "The plan could not be generated in the expected format.",
         },
         { status: 502 },
       );
     }
 
-    return NextResponse.json(aiRecommendationSchema.parse(recommendation));
+    return NextResponse.json(aiPlanSchema.parse(plan));
   } catch (error) {
     console.error("AI summary request failed:", error);
 
@@ -130,7 +125,7 @@ export async function POST(request: Request) {
 
       if (error.status === 401 || error.status === 403) {
         return NextResponse.json(
-          { error: "AI recommendations are not configured correctly." },
+          { error: "AI plans are not configured correctly." },
           { status: 500 },
         );
       }
@@ -138,13 +133,13 @@ export async function POST(request: Request) {
 
     if (error instanceof Error && error.message.includes("OPENAI_API_KEY")) {
       return NextResponse.json(
-        { error: "AI recommendations are not configured yet." },
+        { error: "AI plans are not configured yet." },
         { status: 500 },
       );
     }
 
     return NextResponse.json(
-      { error: "Unable to generate a recommendation right now." },
+      { error: "Unable to generate a plan right now." },
       { status: 502 },
     );
   }

@@ -3,7 +3,8 @@ import type { UseFormReturn } from "react-hook-form";
 import { cn } from "@/lib/utils";
 import {
   budgetOptions,
-  timelineOptions,
+  currentLevelOptions,
+  timeCommitmentOptions,
   type QualificationFormValues,
 } from "@/types/funnel";
 
@@ -43,16 +44,15 @@ export function QualificationForm({
       <fieldset disabled={isSubmitting} className="space-y-6 sm:space-y-7">
         <div className="space-y-4">
           <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800">
-            Step 1 of 3
+            CoachFlow AI plan
           </span>
           <div className="space-y-3">
             <h3 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
-              Answer a few questions for your growth audit
+              Tell Alex what you want help with
             </h3>
             <p className="max-w-2xl text-sm leading-6 text-muted sm:text-base">
-              This mini-assessment helps Alex spot the likely bottleneck behind
-              inconsistent leads, unclear positioning, or a weak conversion path
-              before the next step.
+              Answer a few focused questions and CoachFlow AI will turn them
+              into a personalized client-growth plan you can act on right away.
             </p>
           </div>
         </div>
@@ -62,12 +62,12 @@ export function QualificationForm({
             htmlFor="goal"
             className="text-sm font-semibold tracking-tight text-slate-900"
           >
-            What growth result matters most right now?
+            What result do you want most from your coaching business?
           </label>
           <textarea
             id="goal"
             rows={4}
-            placeholder="For example: convert more of the right leads into booked calls without constantly chasing more traffic."
+            placeholder="For example: sign more qualified clients without constantly posting more or chasing cold leads."
             className={cn(getFieldClasses(Boolean(errors.goal)), "leading-7")}
             {...register("goal")}
           />
@@ -80,48 +80,50 @@ export function QualificationForm({
 
         <div className="space-y-2.5">
           <label
-            htmlFor="challenge"
+            htmlFor="currentLevel"
             className="text-sm font-semibold tracking-tight text-slate-900"
           >
-            What feels like the biggest bottleneck right now?
+            Which stage best describes you right now?
           </label>
-          <textarea
-            id="challenge"
-            rows={4}
-            placeholder="For example: the offer feels vague, leads are curious but not qualified, or the funnel loses momentum before the call."
-            className={cn(
-              getFieldClasses(Boolean(errors.challenge)),
-              "leading-7",
-            )}
-            {...register("challenge")}
-          />
-          {errors.challenge ? (
+          <select
+            id="currentLevel"
+            className={getFieldClasses(Boolean(errors.currentLevel))}
+            {...register("currentLevel")}
+          >
+            <option value="">Select your current level</option>
+            {currentLevelOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          {errors.currentLevel ? (
             <p className="text-sm font-medium text-rose-700">
-              {errors.challenge.message}
+              {errors.currentLevel.message}
             </p>
           ) : null}
         </div>
 
         <div className="space-y-2.5">
           <label
-            htmlFor="triedBefore"
+            htmlFor="biggestStruggle"
             className="text-sm font-semibold tracking-tight text-slate-900"
           >
-            What have you already tried to improve it?
+            What is your biggest struggle right now?
           </label>
           <textarea
-            id="triedBefore"
-            rows={3}
-            placeholder="Mention any messaging changes, funnels, offers, paid traffic, or sales process tweaks you have already tested."
+            id="biggestStruggle"
+            rows={4}
+            placeholder="For example: inconsistent leads, unclear messaging, a weak offer, or trouble turning interest into booked calls."
             className={cn(
-              getFieldClasses(Boolean(errors.triedBefore)),
+              getFieldClasses(Boolean(errors.biggestStruggle)),
               "leading-7",
             )}
-            {...register("triedBefore")}
+            {...register("biggestStruggle")}
           />
-          {errors.triedBefore ? (
+          {errors.biggestStruggle ? (
             <p className="text-sm font-medium text-rose-700">
-              {errors.triedBefore.message}
+              {errors.biggestStruggle.message}
             </p>
           ) : null}
         </div>
@@ -129,26 +131,26 @@ export function QualificationForm({
         <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
           <div className="space-y-2.5">
             <label
-              htmlFor="timeline"
+              htmlFor="timeCommitment"
               className="text-sm font-semibold tracking-tight text-slate-900"
             >
-              How soon do you want this working better?
+              How much time can you realistically commit each week?
             </label>
             <select
-              id="timeline"
-              className={getFieldClasses(Boolean(errors.timeline))}
-              {...register("timeline")}
+              id="timeCommitment"
+              className={getFieldClasses(Boolean(errors.timeCommitment))}
+              {...register("timeCommitment")}
             >
-              <option value="">Select a timeline</option>
-              {timelineOptions.map((option) => (
+              <option value="">Select your time commitment</option>
+              {timeCommitmentOptions.map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>
               ))}
             </select>
-            {errors.timeline ? (
+            {errors.timeCommitment ? (
               <p className="text-sm font-medium text-rose-700">
-                {errors.timeline.message}
+                {errors.timeCommitment.message}
               </p>
             ) : null}
           </div>
@@ -158,14 +160,14 @@ export function QualificationForm({
               htmlFor="budget"
               className="text-sm font-semibold tracking-tight text-slate-900"
             >
-              What level of support are you considering?
+              What budget feels realistic for support right now?
             </label>
             <select
               id="budget"
               className={getFieldClasses(Boolean(errors.budget))}
               {...register("budget")}
             >
-              <option value="">Select a budget range</option>
+              <option value="">Select a budget range (optional)</option>
               {budgetOptions.map((option) => (
                 <option key={option} value={option}>
                   {option}
@@ -193,14 +195,12 @@ export function QualificationForm({
             type="submit"
             className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-wait disabled:bg-sky-400"
           >
-            {isSubmitting
-              ? "Building your growth audit..."
-              : "Get my audit summary"}
+            {isSubmitting ? "Building your plan..." : "Get my plan"}
           </button>
           <p aria-live="polite" className="text-sm leading-6 text-muted">
             {isSubmitting
-              ? "Generating Alex Carter's concise audit summary from your answers."
-              : "This step creates your tailored growth audit. Then you can save the summary, continue to the strategy call handoff, and complete the demo flow."}
+              ? "Generating Alex Carter's personalized plan from your answers."
+              : "This step creates your personalized plan. When it feels aligned, the next move is simple: book a call or start the conversation in DMs."}
           </p>
         </div>
       </fieldset>

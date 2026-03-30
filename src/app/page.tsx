@@ -9,8 +9,8 @@ export default function Home() {
     <main className="pb-16 sm:pb-24">
       <div className="mx-auto flex w-full max-w-6xl flex-col px-6 sm:px-10">
         <HeroSection />
-        <HowItWorksSection />
         <AboutCoachSection />
+        <HowItWorksSection />
         <BenefitsSection />
         <FunnelPlaceholderSection />
       </div>

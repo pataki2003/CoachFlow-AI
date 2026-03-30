@@ -23,6 +23,7 @@ const optionalUrlSchema = z.preprocess(
 const publicEnvSchema = z.object({
   NEXT_PUBLIC_APP_URL: z.string().url(),
   NEXT_PUBLIC_BOOKING_URL: optionalUrlSchema,
+  NEXT_PUBLIC_INSTAGRAM_URL: optionalUrlSchema,
   NEXT_PUBLIC_SUPABASE_ANON_KEY: optionalStringSchema,
   NEXT_PUBLIC_SUPABASE_URL: optionalUrlSchema,
 });
@@ -41,6 +42,7 @@ export const publicEnv = publicEnvSchema.parse({
     emptyStringToUndefined(process.env.NEXT_PUBLIC_APP_URL) ??
     "http://localhost:3000",
   NEXT_PUBLIC_BOOKING_URL: process.env.NEXT_PUBLIC_BOOKING_URL,
+  NEXT_PUBLIC_INSTAGRAM_URL: process.env.NEXT_PUBLIC_INSTAGRAM_URL,
   NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
 });

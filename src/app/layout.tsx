@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Coach Funnel Demo",
+  title: "CoachFlow AI",
   description:
-    "Production-minded MVP foundation for an AI-powered coach funnel demo.",
+    "Coach-led AI funnel demo for personalized growth plans and direct conversion handoffs.",
 };
 
 export default function RootLayout({

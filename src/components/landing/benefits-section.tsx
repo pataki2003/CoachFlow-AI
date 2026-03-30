@@ -1,8 +1,8 @@
 const benefits = [
-  "Clarifies the offer your audience can actually buy",
-  "Improves lead quality before the strategy call",
-  "Shows the next move that deserves focus first",
-  "Creates a smoother path from interest to conversation",
+  "Clarifies what your audience actually needs to hear",
+  "Highlights the bottleneck behind inconsistent client flow",
+  "Gives a realistic next-seven-days focus",
+  "Moves the right people toward call or DM",
 ] as const;
 
 export function BenefitsSection() {
@@ -11,18 +11,18 @@ export function BenefitsSection() {
       <div className="rounded-[2rem] border border-panel-border bg-white/72 p-6 shadow-[0_16px_40px_rgba(15,23,42,0.06)] sm:p-8">
         <div className="max-w-2xl space-y-3">
           <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
-            What the audit helps uncover
+            Why this converts
           </p>
           <h2
             id="benefits-title"
             className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
           >
-            Built to improve the quality of every growth conversation
+            Built to feel like a real coach funnel, not a generic AI tool
           </h2>
           <p className="text-base leading-7 text-muted">
-            This demo is designed to show how Alex can make the path from
-            curiosity to committed action feel clearer, more useful, and easier
-            to trust.
+            Every section is designed to make the next step easier to trust:
+            clearer positioning up front, a faster plan in the middle, and a
+            clean conversion handoff at the end.
           </p>
         </div>
 

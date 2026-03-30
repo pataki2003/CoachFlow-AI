@@ -1,12 +1,12 @@
 const credibilityPoints = [
-  "Helps online experts tighten positioning before they add more traffic.",
-  "Focuses on offer clarity, lead quality, and smoother conversion journeys.",
-  "Uses short diagnostic audits to make the next move obvious before the call.",
+  "Helps online coaches tighten their offer before they chase more traffic.",
+  "Focuses on better-fit leads, clearer messaging, and smoother conversion paths.",
+  "Uses short personalized plans to make the next move obvious before the call.",
 ] as const;
 
 const focusAreas = [
   "Clearer offers",
-  "Better lead quality",
+  "Better-fit leads",
   "Stronger conversion flow",
 ] as const;
 
@@ -24,14 +24,13 @@ export function AboutCoachSection() {
                 id="about-coach-title"
                 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
               >
-                Business growth coaching for online experts who want better
-                clients, not just more attention.
+                Alex helps online coaches turn attention into real client
+                demand.
               </h2>
               <p className="max-w-2xl text-base leading-7 text-muted">
-                Alex Carter helps coaches, consultants, and digital experts turn
-                audience interest into stronger sales conversations through
-                clearer positioning, sharper offers, and a cleaner client
-                journey.
+                Through clearer positioning, sharper offers, and a simpler path
+                from interest to inquiry, Alex Carter helps coaches attract more
+                qualified clients without piling on more complexity.
               </p>
             </div>
           </div>
@@ -39,7 +38,7 @@ export function AboutCoachSection() {
           <div className="space-y-4">
             <div className="rounded-[1.75rem] border border-slate-200 bg-slate-50/85 p-5">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-                What Alex is known for
+                What Alex focuses on
               </p>
               <ul className="mt-4 space-y-3">
                 {credibilityPoints.map((point) => (

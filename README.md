@@ -1,19 +1,15 @@
-# AI Coach Funnel Demo
+# CoachFlow AI
 
-A small demo app that shows how a coach or consultant could turn landing-page traffic into a more qualified booking flow.
+CoachFlow AI is a high-conversion demo app that shows how a coach could turn
+landing-page traffic into a personalized plan and a direct conversion step.
 
 The current MVP includes:
-- a polished landing page
-- an interactive qualification form
+- a coach-specific landing page for Alex Carter
+- a short personalized plan form
 - client-side validation with React Hook Form + Zod
-- a server-side OpenAI recommendation route
-- a premium result card that displays a short AI-generated next step
-
-Planned later phases still include:
-- email capture
-- booking CTA flow
-- Supabase persistence
-- Resend integration
+- a server-side OpenAI plan route
+- a premium result view with structured plan sections
+- a final CTA block for booking or DM handoff
 
 ## Stack
 
@@ -29,15 +25,17 @@ Planned later phases still include:
 
 ## Current Flow
 
-1. A visitor lands on the homepage.
-2. The hero CTA scrolls to the interactive funnel section.
-3. The visitor answers five qualification questions.
+1. A visitor lands on the CoachFlow AI landing page.
+2. The hero CTA scrolls to the personalized plan section.
+3. The visitor answers a short set of coaching business questions.
 4. The client submits the answers to `POST /api/ai-summary`.
 5. The backend validates the payload, calls OpenAI, and returns structured JSON:
-   - `title`
-   - `summary`
-   - `nextStep`
-6. The frontend swaps the form into a recommendation card.
+   - `goalClarity`
+   - `biggestBottleneck`
+   - `focusNext7Days`
+   - `simplePlan`
+   - `softCta`
+6. The frontend swaps the form into a premium plan view with final CTA buttons.
 
 ## Getting Started
 
@@ -69,11 +67,18 @@ Copy-Item .env.example .env.local
 
 ### 3. Required env for the current phase
 
-Only `OPENAI_API_KEY` is required for the AI recommendation flow right now.
+Only `OPENAI_API_KEY` is required for the AI plan flow right now.
 
 ```env
 OPENAI_API_KEY=your_openai_api_key
 NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+These public URLs are optional but supported by the final CTA block:
+
+```env
+NEXT_PUBLIC_BOOKING_URL=
+NEXT_PUBLIC_INSTAGRAM_URL=
 ```
 
 These are already prepared for later phases but are not used yet:
@@ -83,7 +88,6 @@ NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
 RESEND_API_KEY=
-NEXT_PUBLIC_BOOKING_URL=
 ```
 
 ### 4. Run the app
@@ -132,6 +136,7 @@ src/
       qualification-funnel.tsx
       recommendation-preview.tsx
     landing/
+      about-coach-section.tsx
       hero-section.tsx
       how-it-works-section.tsx
       benefits-section.tsx
@@ -152,9 +157,9 @@ src/
 ### `POST /api/ai-summary`
 
 This route:
-- validates the qualification answers with Zod
+- validates the personalized plan answers with Zod
 - calls OpenAI on the server only
-- enforces a structured recommendation shape
+- enforces a structured plan shape
 - returns safe error messages for invalid input or provider failures
 
 No secrets are exposed to the client.
@@ -162,8 +167,8 @@ No secrets are exposed to the client.
 ## Current Limitations
 
 - No persistence yet
-- No lead capture yet
-- No booking logic yet
+- No saved lead storage yet
+- Booking and Instagram CTAs are env-driven and can fall back to placeholders
 - No Resend email flow yet
 - The `leads` route is still a placeholder for a later phase
 
@@ -178,7 +183,6 @@ npm run build
 
 Then test locally:
 - open the homepage
-- scroll to the funnel
+- scroll to the plan section
 - submit invalid answers and confirm inline validation appears
-- submit valid answers and confirm the AI recommendation card renders
-
+- submit valid answers and confirm the AI plan view renders

@@ -1,43 +1,39 @@
 const steps = [
   {
-    title: "Diagnose the bottleneck",
+    title: "Share where you're stuck",
     description:
-      "Use a short growth audit to surface what is actually slowing down lead quality, positioning, or conversion.",
+      "Answer a few fast questions about your goals, current level, and the part of your client journey that feels off.",
   },
   {
-    title: "Deliver a focused audit",
+    title: "Get your personalized plan",
     description:
-      "Turn the answers into a concise audit summary with a likely constraint and a practical next move.",
+      "CoachFlow AI turns your answers into a clear plan Alex Carter would use to focus the next seven days.",
   },
   {
-    title: "Review the next move together",
+    title: "Take the next step",
     description:
-      "Guide the right prospects into a strategy call where Alex can help tighten the plan and priorities.",
+      "If the plan resonates, move straight into a call or DM so the conversation keeps momentum.",
   },
 ] as const;
 
 export function HowItWorksSection() {
   return (
-    <section
-      aria-labelledby="how-it-works-title"
-      className="pt-6 sm:pt-8"
-    >
+    <section aria-labelledby="how-it-works-title" className="pt-6 sm:pt-8">
       <div className="space-y-8">
         <div className="max-w-2xl space-y-3">
           <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
-            How the audit works
+            How CoachFlow AI works
           </p>
           <h2
             id="how-it-works-title"
             className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
           >
-            A sharper journey from interest to a more qualified client
-            conversation
+            A simpler path from coach interest to real conversion
           </h2>
           <p className="text-base leading-7 text-muted">
-            The page introduces Alex Carter&apos;s approach, then the audit helps
-            a prospect understand what deserves attention before the booking
-            moment.
+            The page introduces Alex Carter&apos;s approach, the plan clarifies
+            what to fix first, and the result view makes the next action easy to
+            take.
           </p>
         </div>
 
