@@ -1,7 +1,7 @@
 const proofPoints = [
-  "Clarify what makes the right clients say yes",
-  "See what is slowing lead quality down",
-  "Get a cleaner next move before you overcomplicate it",
+  "Build a routine you can actually stick to",
+  "Get clear on what to focus on first",
+  "Start with simple habits that fit real life",
 ] as const;
 
 type HeroSectionProps = {
@@ -15,7 +15,7 @@ export function HeroSection({
 }: HeroSectionProps) {
   const secondaryCta = bookingUrl ?? instagramUrl ?? "#personalized-plan";
   const secondaryLabel = bookingUrl
-    ? "Book a strategy call"
+    ? "Book a coaching call"
     : instagramUrl
       ? "DM Alex on Instagram"
       : "See the free plan";
@@ -27,23 +27,22 @@ export function HeroSection({
         <div className="max-w-4xl space-y-8">
           <div className="space-y-5">
             <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800">
-              Alex Carter | Business Growth Coach
+              Alex Carter | Online Personal Trainer
             </span>
             <div className="space-y-4">
               <p className="text-sm font-medium uppercase tracking-[0.24em] text-muted">
-                For online coaches, creators, and consultants
+                For busy adults who want a plan they can stick to
               </p>
               <h1
                 id="hero-title"
                 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
               >
-                Get a clearer path to more qualified coaching clients
+                Get a clearer plan for fat loss, muscle gain, and consistency
               </h1>
               <p className="max-w-2xl text-base leading-7 text-muted sm:text-lg">
-                Alex helps service-based experts tighten their positioning,
-                sharpen their message, and turn more audience attention into
-                the right client conversations. Start with a free personalized
-                plan to see what deserves your focus first.
+                Alex helps busy adults train with more structure, build better
+                habits, and stop guessing what to do next. Start with a free
+                personalized starter plan to see what deserves your focus first.
               </p>
             </div>
           </div>
@@ -66,9 +65,9 @@ export function HeroSection({
           </div>
 
           <p className="max-w-2xl text-sm leading-6 text-muted">
-            If you want a fast first pass, the personalized plan will map out
-            the likely bottleneck. If you already know you want support, you
-            can book a call or start the conversation in DMs.
+            If you want a quick first step, the personalized plan will show you
+            what to focus on now. If you want help applying it, you can book a
+            coaching call or start the conversation in DMs.
           </p>
 
           <ul className="flex flex-wrap gap-3" aria-label="Key value points">

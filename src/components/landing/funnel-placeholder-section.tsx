@@ -17,13 +17,13 @@ export function FunnelPlaceholderSection() {
             id="personalized-plan-title"
             className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
           >
-            Get your personalized growth plan
+            Get your personalized starter plan
           </h2>
           <p className="text-base leading-7 text-muted sm:text-lg">
-            Answer a few focused questions about your business and Alex&apos;s
-            planning flow will map out the next steps worth focusing on first.
-            It&apos;s a simple way to see what may be slowing client growth down
-            before you book a call.
+            Answer a few quick questions about your goal, your routine, and
+            what has been getting in the way. You&apos;ll get a simple
+            first-pass plan that shows what to focus on next before you book a
+            call.
           </p>
         </div>
         <QualificationFunnel

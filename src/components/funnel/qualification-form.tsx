@@ -51,9 +51,9 @@ export function QualificationForm({
               Answer a few quick questions
             </h3>
             <p className="max-w-2xl text-sm leading-6 text-muted sm:text-base">
-              This short intake helps Alex pinpoint where your client growth may
-              be getting stuck, then turn that into a personalized plan you can
-              use right away.
+              This short intake helps Alex see where your fitness progress may
+              be getting stuck, then turn that into a personalized starter plan
+              you can use right away.
             </p>
           </div>
         </div>
@@ -63,12 +63,12 @@ export function QualificationForm({
             htmlFor="goal"
             className="text-sm font-semibold tracking-tight text-slate-900"
           >
-            What result do you want most over the next few months?
+            What is your main fitness goal right now?
           </label>
           <textarea
             id="goal"
             rows={4}
-            placeholder="For example: sign more qualified clients without relying on constant posting, referrals, or chasing cold leads."
+            placeholder="For example: lose body fat, build muscle, feel stronger, or get back into a routine I can actually stick to."
             className={cn(getFieldClasses(Boolean(errors.goal)), "leading-7")}
             {...register("goal")}
           />
@@ -84,7 +84,7 @@ export function QualificationForm({
             htmlFor="currentLevel"
             className="text-sm font-semibold tracking-tight text-slate-900"
           >
-            Which stage best describes your business right now?
+            What best describes your current level?
           </label>
           <select
             id="currentLevel"
@@ -110,12 +110,12 @@ export function QualificationForm({
             htmlFor="biggestStruggle"
             className="text-sm font-semibold tracking-tight text-slate-900"
           >
-            What feels like the biggest bottleneck right now?
+            What is the biggest thing getting in your way?
           </label>
           <textarea
             id="biggestStruggle"
             rows={4}
-            placeholder="For example: inconsistent inquiries, unclear messaging, a weak offer, or too much drop-off before people book."
+            placeholder="For example: lack of consistency, not knowing what to do at the gym, low energy, nutrition habits, or trouble staying on track."
             className={cn(
               getFieldClasses(Boolean(errors.biggestStruggle)),
               "leading-7",
@@ -203,7 +203,7 @@ export function QualificationForm({
           <p aria-live="polite" className="text-sm leading-6 text-muted">
             {isSubmitting
               ? "Generating Alex Carter's personalized plan from your answers."
-              : "You&apos;ll get a concise first-pass plan with the clearest next move to focus on, then you can decide whether to book a call or start in DMs."}
+              : "You&apos;ll get a simple first-pass plan with the clearest next step to focus on, then you can decide whether to book a call or start in DMs."}
           </p>
         </div>
       </fieldset>

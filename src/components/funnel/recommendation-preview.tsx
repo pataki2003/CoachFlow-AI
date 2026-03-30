@@ -34,15 +34,15 @@ export function RecommendationPreview({
       value: plan.goalClarity,
     },
     {
-      label: "Main bottleneck",
+      label: "Biggest obstacle",
       value: plan.biggestBottleneck,
     },
     {
-      label: "Focus for the next 7 days",
+      label: "What to focus on next 7 days",
       value: plan.focusNext7Days,
     },
     {
-      label: "Simple plan",
+      label: "Simple starter plan",
       value: plan.simplePlan,
     },
   ] as const;
@@ -55,15 +55,15 @@ export function RecommendationPreview({
       <div className="space-y-8">
         <div className="space-y-4">
           <span className="inline-flex w-fit items-center rounded-full border border-sky-200 bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-800">
-            Your personalized plan
+            Your personalized starter plan
           </span>
           <h3 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
             Here&apos;s where Alex would focus first
           </h3>
           <p className="text-base leading-7 text-muted sm:text-lg">
-            Based on what you shared, this is the kind of first-pass guidance
-            Alex would use to clarify the next move before changing everything
-            at once.
+            Based on what you shared, this is the kind of practical guidance
+            Alex would use to help you simplify the next step instead of trying
+            to fix everything at once.
           </p>
         </div>
 
@@ -121,14 +121,14 @@ export function RecommendationPreview({
                   rel="noreferrer noopener"
                   className="inline-flex min-h-12 items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-50"
                 >
-                  Book a strategy call
+                  Book a coaching call
                 </a>
               ) : (
                 <button
                   type="button"
                   className="inline-flex min-h-12 items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition-colors"
                 >
-                  Book a strategy call
+                  Book a coaching call
                 </button>
               )}
 

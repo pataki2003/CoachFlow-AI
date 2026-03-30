@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Carter | Business Growth Coach",
+  title: "Alex Carter | Online Personal Trainer",
   description:
-    "Personalized growth plans for online coaches who want clearer positioning, better-fit leads, and a stronger path to booked clients.",
+    "Personalized fitness starter plans for busy adults who want fat loss, muscle gain, and a more consistent routine.",
 };
 
 export default function RootLayout({

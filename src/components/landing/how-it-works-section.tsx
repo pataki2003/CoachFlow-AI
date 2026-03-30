@@ -1,18 +1,18 @@
 const steps = [
   {
-    title: "Share where things feel stuck",
+    title: "Share your goal and current routine",
     description:
-      "Answer a few quick questions about your goals, your current stage, and what feels off in your client journey.",
+      "Answer a few quick questions about your goal, your current level, and what has been getting in the way.",
   },
   {
-    title: "Get a focused first-pass plan",
+    title: "Get your personalized starter plan",
     description:
-      "Alex's AI-powered intake turns your answers into a concise plan that highlights the likely bottleneck and what to fix first.",
+      "The intake turns your answers into a practical first-pass plan with the clearest next steps to focus on.",
   },
   {
-    title: "Choose the next step with Alex",
+    title: "Book a call or send a DM",
     description:
-      "If the plan resonates, book a strategy call or send a quick DM so the conversation can move into real support.",
+      "If the plan feels right, the next step is simple: talk it through with Alex and get help applying it.",
   },
 ] as const;
 
@@ -28,12 +28,12 @@ export function HowItWorksSection() {
             id="how-it-works-title"
             className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
           >
-            Start with clarity before you commit to the deeper work
+            A simple first step before you commit to coaching
           </h2>
           <p className="text-base leading-7 text-muted">
-            The personalized plan is designed to make the next move easier to
-            see, so you can quickly decide whether to apply it yourself or work
-            through it with Alex.
+            The goal is to make the next move easier to see, so you can stop
+            overthinking the process and focus on what will help most right
+            now.
           </p>
         </div>
 
