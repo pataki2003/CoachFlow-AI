@@ -29,7 +29,7 @@ export function FunnelPlaceholderSection() {
           </p>
           <a
             href="#interactive-demo"
-            className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-300 bg-slate-950 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-sky-600 px-6 py-3 text-sm font-semibold !text-white transition-colors hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
             Jump to the live demo area
           </a>
