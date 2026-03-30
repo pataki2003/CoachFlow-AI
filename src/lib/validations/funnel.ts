@@ -33,12 +33,14 @@ export const qualificationFormSchema = z.object({
     .refine(
       (value) => (budgetOptions as readonly string[]).includes(value),
       "Select a budget.",
-    ),
+  ),
 });
 
-export const leadCaptureSchema = z.object({
-  email: z.string().trim().email("Enter a valid email address"),
+export const emailCaptureSchema = z.object({
+  email: z.string().trim().email("Enter a valid email address."),
 });
+
+export const leadCaptureSchema = emailCaptureSchema;
 
 export const aiSummaryRequestSchema = z.object({
   answers: qualificationFormSchema,

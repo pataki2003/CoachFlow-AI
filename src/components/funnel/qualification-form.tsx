@@ -51,8 +51,8 @@ export function QualificationForm({
             </h3>
             <p className="max-w-2xl text-sm leading-6 text-muted sm:text-base">
               This gives the demo enough context to generate a concise,
-              personalized recommendation before the later funnel steps are
-              added.
+              personalized recommendation before the email step continues the
+              funnel.
             </p>
           </div>
         </div>
@@ -200,7 +200,7 @@ export function QualificationForm({
           <p aria-live="polite" className="text-sm leading-6 text-muted">
             {isSubmitting
               ? "Generating a concise AI recommendation from your answers."
-              : "This step now uses the AI route to create a concise recommendation. Email capture and booking come in later phases."}
+              : "This step uses the AI route to create a concise recommendation. Email capture comes next, followed by the booking handoff in Phase 6."}
           </p>
         </div>
       </fieldset>

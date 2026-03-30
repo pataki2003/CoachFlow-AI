@@ -4,6 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import { BookingReadyState } from "@/components/funnel/booking-ready-state";
+import { EmailCaptureForm } from "@/components/funnel/email-capture-form";
 import { QualificationForm } from "@/components/funnel/qualification-form";
 import { RecommendationPreview } from "@/components/funnel/recommendation-preview";
 import {
@@ -13,6 +15,8 @@ import {
 import type {
   AiRecommendation,
   AiSummaryRequest,
+  EmailCaptureValues,
+  FunnelStep,
   QualificationFormValues,
 } from "@/types/funnel";
 
@@ -38,10 +42,12 @@ function getApiErrorMessage(payload: unknown) {
 }
 
 export function QualificationFunnel() {
+  const [capturedEmail, setCapturedEmail] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [recommendation, setRecommendation] = useState<AiRecommendation | null>(
     null,
   );
+  const [step, setStep] = useState<FunnelStep>("qualification");
   const [submittedValues, setSubmittedValues] =
     useState<QualificationFormValues | null>(null);
 
@@ -83,15 +89,39 @@ export function QualificationFunnel() {
 
     setSubmittedValues(values);
     setRecommendation(parsedRecommendation.data);
+    setStep("email-capture");
+  }
+
+  async function handleEmailSubmit(values: EmailCaptureValues) {
+    await new Promise((resolve) => setTimeout(resolve, 450));
+    setCapturedEmail(values.email);
+    setStep("ready-for-booking");
   }
 
   return (
     <div className="mt-10 rounded-[1.75rem] border border-dashed border-slate-300/90 bg-white/68 p-5 sm:mt-12 sm:p-6 lg:p-10">
-      {recommendation && submittedValues ? (
-        <RecommendationPreview
-          recommendation={recommendation}
-          values={submittedValues}
+      {step === "qualification" ? (
+        <QualificationForm
+          errorMessage={errorMessage}
+          form={form}
+          onSubmit={handleSubmit}
         />
+      ) : recommendation && submittedValues ? (
+        <div className="space-y-6 sm:space-y-8 lg:space-y-10">
+          <RecommendationPreview
+            recommendation={recommendation}
+            values={submittedValues}
+          />
+
+          {step === "email-capture" ? (
+            <EmailCaptureForm onSubmit={handleEmailSubmit} />
+          ) : (
+            <BookingReadyState
+              email={capturedEmail}
+              recommendationTitle={recommendation.title}
+            />
+          )}
+        </div>
       ) : (
         <QualificationForm
           errorMessage={errorMessage}

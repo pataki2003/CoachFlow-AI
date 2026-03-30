@@ -13,7 +13,10 @@ export const budgetOptions = [
   "Not sure yet",
 ] as const;
 
-export type FunnelStep = "questions" | "result";
+export type FunnelStep =
+  | "qualification"
+  | "email-capture"
+  | "ready-for-booking";
 
 export type QualificationFormValues = {
   goal: string;
@@ -21,6 +24,10 @@ export type QualificationFormValues = {
   triedBefore: string;
   timeline: string;
   budget: string;
+};
+
+export type EmailCaptureValues = {
+  email: string;
 };
 
 export type AiRecommendation = {

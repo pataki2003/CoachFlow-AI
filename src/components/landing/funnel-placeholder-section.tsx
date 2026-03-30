@@ -20,7 +20,8 @@ export function FunnelPlaceholderSection() {
           </h2>
           <p className="text-base leading-7 text-muted sm:text-lg">
             Answer a few quick questions to preview how the funnel will shape a
-            recommendation before the later email and booking steps are added.
+            recommendation, then continue into the email step that prepares the
+            final booking handoff.
           </p>
         </div>
         <QualificationFunnel />
